@@ -99,7 +99,7 @@
                  }
                 });
         
-            d3.csv("/src/data.csv").then(function(data){
+            d3.csv("data.csv").then(function(data){
                 Transfert(data);
                 Create_Graph(data);
                 console.log(data[1]);
