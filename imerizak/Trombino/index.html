@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trombinoscope</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <ul class="nav nav-tabs">
+
+    </ul>
+    <div class="form-row1" >
+
+    </div>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                type: "GET",
+                url: "/data.csv",
+                dataType: "text",
+                success: function(data){getCSV(data)},
+                error : (error) => console.log("erreur :"+error[0])
+            })
+        })
+        function getCSV(csv){
+            var data = csv.split(/\r\n|\n/)
+            var headers = data[0].split(",")
+            var studentTable = []
+            var student =[]
+            var cards = []
+            var cardClass = '"form-group student-box"'
+            var img = "'/profile.png'"
+            for(i=1;i<data.length;i++){
+                
+                student = data[i].split(",")
+                for(j=0;j<headers.length;j++){
+                var cardHtml = "<div class=" + cardClass + ">"
+                cardHtml += "<img src="+ img +  "width="+"'320'"+" height="+"'250'"+" style="+"'border-radius: 2%;'"+ "/>"
+                cardHtml += "<h2 class="+"'text-center'"+">"    
+                cardHtml += student[1] + " " + student[2]
+                cardHtml += "</h2>"
+                cardHtml += "<h1 class="+"'text-center'"+">" 
+                cardHtml += student[5]
+                cardHtml += "</h1>" 
+                cardHtml += "</div> "
+                
+                }
+                cards.push(cardHtml)  
+            }
+            $(".form-row1").append(cards)
+            
+        }
+    </script>
+</body>
+</html>
