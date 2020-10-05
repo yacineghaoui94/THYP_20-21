@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Promotion 2020/2021</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="js/script_thyp.js"></script>
+        <script src="js/script_cen.js"></script>
+        <script src="js/script_net.js"></script>
+        <script src="js/script_gsi.js"></script>
+        <script src="js/langue.js"></script>
+        <script src="js/reseau.js"></script>
+      
+    </head>
+
+    <body class="bg-light">
+        <div id="header">
+            <div id="title" >
+                <h1>Promo 2020/2021<small> TP n°1</small></h1>
+            </div>
+            <div id="facets">
+                <div class="container">
+                    <nav class="navbar navbar-expand-lg navbar-light" style = "background-color: #494D4E ">
+                      
+                        <ul class="nav nav-pills mb-5 justify-content-center" id="myTab" role="tablist">
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Profil</a>
+                                <div class="dropdown-menu">
+                                    <a class="nav-link" id="pills-profils-tab" data-toggle="pill"  href="#pills-profils" role="tab" aria-controls="pills-profils" aria-selected="true">Général</a>
+                                    <a class="nav-link" id="pills-thyp-tab" data-toggle="pill"  href="#pills-thyp" role="tab" aria-controls="pills-thyp" aria-selected="false">Profil M2 THYP</a>
+                                    <a class="nav-link" id="pills-net-tab" data-toggle="pill"  href="#pills-net" role="tab" aria-controls="pills-net" aria-selected="false">Profil M1 NET </a>
+                                    <a class="nav-link" id="pills-cen-tab" data-toggle="pill"  href="#pills-cen" role="tab" aria-controls="pills-cen" aria-selected="false">Profil M1 CEN </a>
+                                    <a class="nav-link" id="pills-gsi-tab" data-toggle="pill"  href="#pills-gsi" role="tab" aria-controls="pills-gsi" aria-selected="false">Profil M1 GSI </a>
+                                </div>
+                              </li>
+        
+                              <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Langues</a>
+                                <div class="dropdown-menu">
+                                    <a class="nav-link" id="pills-langues-tab" data-toggle="pill"  href="#pills-langues" role="tab" aria-controls="pills-langues" aria-selected="true">Général</a>
+                                    <a class="nav-link" id="pills-langues_thyp-tab" data-toggle="pill"  href="#pills-langues_thyp" role="tab" aria-controls="pills-langues_thyp" aria-selected="false">M2 THYP</a>
+                                    <a class="nav-link" id="pills-langues_cen-tab" data-toggle="pill"  href="#pills-langues_cen" role="tab" aria-controls="pills-langues_cen" aria-selected="false">M1 CEN</a>
+                                    <a class="nav-link" id="pills-langues_net-tab" data-toggle="pill"  href="#pills-langues_net" role="tab" aria-controls="pills-langues_net" aria-selected="false">M1 NET</a>
+                                    <a class="nav-link" id="pills-langues_gsi-tab" data-toggle="pill"  href="#pills-langues_gsi" role="tab" aria-controls="pills-langues_gsi" aria-selected="false">M1 GSI</a>
+                                </div>
+                              </li>
+                           
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-internet-tab" data-toggle="pill"  href="#pills-internet" role="tab" aria-controls="pills-internet" aria-selected="false">Connexion Internet</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-parcours-tab" data-toggle="pill"  href="#pills-parcours" role="tab" aria-controls="pills-parcours" aria-selected="false">Parcours</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-specialite-tab" data-toggle="pill"  href="#pills-specialite" role="tab" aria-controls="pills-specialite" aria-selected="false">Spécialité</a>
+                            </li>
+
+                            
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Réseaux Sociaux</a>
+                                <div class="dropdown-menu">
+                                    <a class="nav-link" id="pills-stats-tab" data-toggle="pill"  href="#pills-stats" role="tab" aria-controls="pills-stats" aria-selected="true">Général</a>
+                                    <a class="nav-link" id="pills-reseau_thyp-tab" data-toggle="pill"  href="#pills-reseau_thyp" role="tab" aria-controls="pills-reseau_thyp" aria-selected="false">M2 THYP</a>
+                                    <a class="nav-link" id="pills-reseau_cen-tab" data-toggle="pill"  href="#pills-reseau_cen" role="tab" aria-controls="pills-reseau_cen" aria-selected="false">M1 CEN</a>
+                                    <a class="nav-link" id="pills-reseau_net-tab" data-toggle="pill"  href="#pills-reseau_net" role="tab" aria-controls="pills-reseau_net" aria-selected="false">M1 NET</a>
+                                    <a class="nav-link" id="pills-reseau_gsi-tab" data-toggle="pill"  href="#pills-reseau_gsi" role="tab" aria-controls="pills-reseau_gsi" aria-selected="false">M1 GSI</a>
+                                </div>
+                              </li>
+
+                             
+
+                            
+                          
+                        </ul>
+                    </nav>
+
+                        <div class="tab-content" id="myTabContent">
+                            
+                            <div class="tab-pane fade show active" id="pills-profils" role="tabpanel" aria-labelledby="pills-profils-tab">
+                                <div class="container" style="margin-top: 10px;">
+                                    <div id="rows" class="row justify-content-center ">
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-thyp" role="tabpanel" aria-labelledby="pills-thyp-tab">
+                                <div class="container" style="margin-top: 10px;">
+                                    <div id="rows_thyp" class="row justify-content-center ">
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-net" role="tabpanel" aria-labelledby="pills-net-tab">
+                                <div class="container" style="margin-top: 10px;">
+                                    <div id="rows_net" class="row justify-content-center ">
+                                      
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="pills-cen" role="tabpanel" aria-labelledby="pills-cen-tab">
+                                <div class="container" style="margin-top: 10px;">
+                                    <div id="rows_cen" class="row justify-content-center ">
+                                      
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="pills-gsi" role="tabpanel" aria-labelledby="pills-gsi-tab">
+                                <div class="container" style="margin-top: 10px;">
+                                    <div id="rows_gsi" class="row justify-content-center ">
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                            
+        
+                            <div class="tab-pane fade" id="pills-stats" role="tabpanel" aria-labelledby="pills-ordinateur-stats">
+                                <div class="container" style="margin-top: 10px;">
+                                    <div id="stats-rows" class="row justify-content-center">
+                                        <div id="linkedin" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                            <p class="question">Utilisation général de Linkedin</p>
+                                        </div>
+                                        <div id="facebook" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                            <p class="question">Utilisation général de Facebook</p>
+                                        </div>
+
+                                        <div id="instagram" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                            <p class="question">Utilisation général d'Instagram</p>
+                            
+                                        </div>
+                                        <div id="snapchat" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                            <p class="question">Utilisation général de SnapChat</p>
+                            
+                                        </div>
+
+                                        <div id="telegram" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                            <p class="question">Utilisation général de Télégram</p>
+                            
+                                        </div>
+                                        <div id="youtube" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                            <p class="question">Utilisation général de Youtube</p>
+                            
+                                        </div>
+                                        <div id="discord" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                            <p class="question">Utilisation général de Discord</p>
+                            
+                                        </div>
+                                </div>
+                             </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-reseau_thyp" role="tabpanel" aria-labelledby="pills-reseau_thyp-stats">
+                            <div class="container" style="margin-top: 10px;">
+                                <div id="stats-rows" class="row justify-content-center">
+                                    <div id="youtube_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                        <p class="question">Utilisation de Youtube M2 thyp</p>
+                                    </div>
+                                    <div id="linkedin_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                        <p class="question">Utilisation de Linkedin M2 thyp</p>
+                                    </div>
+                                    <div id="facebook_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                        <p class="question">Utilisation de Facebook M2 Thyp</p>
+                                    </div>
+                                    <div id="snapchat_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                        <p class="question">Utilisation de Snapchat M2 thyp</p>
+                                    </div>
+                                    <div id="discord_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                        <p class="question">Utilisation de Discord M2 thyp</p>
+                                    </div>
+                                    <div id="instagram_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                        <p class="question">Utilisation d'Insta M2 thyp</p>
+                                    </div>
+                                    <div id="telegram_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                        <p class="question">Utilisation de Telegram M2 thyp</p>
+                                    </div>
+                                   
+                                   
+
+                                    
+                        
+                                   
+                                </div>
+                         </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-reseau_cen" role="tabpanel" aria-labelledby="pills-reseau_cen-stats">
+                        <div class="container" style="margin-top: 10px;">
+                            <div id="stats-rows" class="row justify-content-center">
+                                <div id="instagram_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                    <p class="question">Utilisation d'Instagram M1 CEN</p>
+                                </div>
+                                <div id="youtube_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                    <p class="question">Utilisation de Youtube M1 CEN</p>
+                                </div>
+                                <div id="linkedin_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                    <p class="question">Utilisation de Linkedin M1 CEN</p>
+                                </div>
+                                <div id="facebook_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                    <p class="question">Utilisation de Facebook M1 CEN</p>
+                                </div>
+                                <div id="telegram_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                    <p class="question">Utilisation de Telegram M1 CEN</p>
+                                </div>
+                                <div id="discord_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                    <p class="question">Utilisation de Discord M1 CEN</p>
+                                </div>
+                                <div id="snapchat_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                    <p class="question">Utilisation de Snapchat M1 CEN</p>
+                                </div>
+                                
+                               
+                               
+                               
+
+                                
+                    
+                               
+                            </div>
+                     </div>
+                </div>
+
+                
+                <div class="tab-pane fade" id="pills-reseau_net" role="tabpanel" aria-labelledby="pills-reseau_net-stats">
+                    <div class="container" style="margin-top: 10px;">
+                        <div id="stats-rows" class="row justify-content-center">
+                            <div id="instagram_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                <p class="question">Utilisation d'Instagram M1 NET</p>
+                            </div>
+                            <div id="youtube_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                <p class="question">Utilisation de Youtube M1 NET</p>
+                            </div>
+                            <div id="linkedin_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                <p class="question">Utilisation de Linkedin M1 NET</p>
+                            </div>
+                            <div id="facebook_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                <p class="question">Utilisation de Facebook M1 NET</p>
+                            </div>
+                            <div id="telegram_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                <p class="question">Utilisation de Telegram M1 NET</p>
+                            </div>
+                            <div id="discord_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                <p class="question">Utilisation de Discord M1 NET</p>
+                            </div>
+                            <div id="snapchat_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                <p class="question">Utilisation de Snapchat M1 NET</p>
+                            </div>
+                
+                           
+                        </div>
+                 </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-reseau_gsi" role="tabpanel" aria-labelledby="pills-reseau_gsi-stats">
+                <div class="container" style="margin-top: 10px;">
+                    <div id="stats-rows" class="row justify-content-center">
+                        <div id="instagram_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation d'Instagram M1 GSI</p>
+                        </div>
+                        <div id="youtube_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation de Youtube M1 GSI</p>
+                        </div>
+                        <div id="linkedin_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation de Linkedin M1 GSI</p>
+                        </div>
+                        <div id="facebook_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation de Facebook M1 GSI</p>
+                        </div>
+                        <div id="telegram_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation de Telegram M1 GSI</p>
+                        </div>
+                        <div id="discord_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation de Discord M1 GSI</p>
+                        </div>
+                        <div id="snapchat_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation de Snapchat M1 GSI</p>
+                        </div>
+            
+                       
+                    </div>
+             </div>
+        </div>
+            <div class="tab-pane fade" id="pills-langues" role="tabpanel" aria-labelledby="pills-langues-stats">
+                <div class="container" style="margin-top: 10px;">
+                    <div id="langues-rows" class="row justify-content-center">
+                        <div id="francais" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation général de la langue Française</p>
+                        </div>
+
+                        <div id="anglais" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation général de la langue Anglaise</p>
+                        </div>
+                        <div id="espagnol" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation général de la langue Espagnole</p>
+                        </div>
+                        <div id="tamazirth" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation général de la langue Tamazirth</p>
+                        </div>
+                        <div id="italien" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation général de la langue Italienne</p>
+                        </div>
+                        <div id="portugais" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation général de la langue Portugaise</p>
+                        </div>
+                        <div id="allemand" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation général de la langue Allemande</p>
+                        </div>
+                        <div id="perse" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation général de la langue Perse</p>
+                        </div>
+                        <div id="russe" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation général de la langue Russe</p>
+                        </div>
+                        <div id="chinois" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation général de la langue Chinoise</p>
+                        </div>
+                        <div id="japonais" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                            <p class="question">Utilisation général de la langue Japonaise</p>
+                        </div>
+                    </div>
+                        
+             </div>
+        </div>
+
+        <div class="tab-pane fade" id="pills-langues_thyp" role="tabpanel" aria-labelledby="pills-langues_thyp-tab">
+            <div class="container" style="margin-top: 10px;">
+                <div id="langues_thyp-rows" class="row justify-content-center">
+                    <div id="francais_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Française en THYP</p>
+                    </div>
+
+                    <div id="anglais_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Anglaise en THYP</p>
+                    </div>
+                    <div id="espagnol_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Espagnole en THYP</p>
+                    </div>
+                    <div id="tamazirth_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Tamazirth en THYP</p>
+                    </div>
+                    <div id="italien_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Italienne en THYP</p>
+                    </div>
+                    <div id="portugais_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Portugaise en THYP</p>
+                    </div>
+                    <div id="allemand_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Allemande en THYP</p>
+                    </div>
+                    <div id="perse_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Perse en THYP</p>
+                    </div>
+                    <div id="russe_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Russe en THYP </p>
+                    </div>
+                    <div id="chinois_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Chinoise en THYP</p>
+                    </div>
+                    <div id="japonais_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Japonaise en THYP</p>
+                    </div>
+                </div>
+                    
+         </div>
+    </div>
+
+    <div class="tab-pane fade" id="pills-langues_net" role="tabpanel" aria-labelledby="pills-langues_net-tab">
+        <div class="container" style="margin-top: 10px;">
+            <div id="langues_net-rows" class="row justify-content-center">
+                <div id="francais_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                    <p class="question">Utilisation de la langue Française en NET </p>
+                </div>
+
+                <div id="anglais_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                    <p class="question">Utilisation de la langue Anglaise en NET</p>
+                </div>
+                <div id="espagnol_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                    <p class="question">Utilisation de la langue Espagnole en NET</p>
+                </div>
+                <div id="tamazirth_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                    <p class="question">Utilisation de la langue Tamazirth en NET</p>
+                </div>
+                <div id="italien_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                    <p class="question">Utilisation de la langue Italienne en NET</p>
+                </div>
+                <div id="portugais_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                    <p class="question">Utilisation de la langue Portugaise en NET</p>
+                </div>
+                <div id="allemand_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                    <p class="question">Utilisation de la langue Allemande en NET</p>
+                </div>
+                <div id="perse_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                    <p class="question">Utilisation de la langue Perse en NET</p>
+                </div>
+                <div id="russe_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                    <p class="question">Utilisation de la langue Russe en NET </p>
+                </div>
+                <div id="chinois_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                    <p class="question">Utilisation de la langue Chinoise en NET</p>
+                </div>
+                <div id="japonais_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                    <p class="question">Utilisation de la langue Japonaise en NET</p>
+                </div>
+            </div>
+                
+     </div>
+</div>
+
+<div class="tab-pane fade" id="pills-langues_gsi" role="tabpanel" aria-labelledby="pills-langues_gsi-tab">
+    <div class="container" style="margin-top: 10px;">
+        <div id="langues_gsi-rows" class="row justify-content-center">
+            <div id="francais_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                <p class="question">Utilisation de la langue Française en GSI</p>
+            </div>
+
+            <div id="anglais_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                <p class="question">Utilisation de la langue Anglaise en GSI</p>
+            </div>
+            <div id="espagnol_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                <p class="question">Utilisation de la langue Espagnole en GSI</p>
+            </div>
+            <div id="tamazirth_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                <p class="question">Utilisation de la langue Tamazirth en GSI</p>
+            </div>
+            <div id="italien_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                <p class="question">Utilisation de la langue Italienne en GSI</p>
+            </div>
+            <div id="portugais_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                <p class="question">Utilisation de la langue Portugaise en GSI</p>
+            </div>
+            <div id="allemand_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                <p class="question">Utilisation de la langue Allemande en GSI</p>
+            </div>
+            <div id="perse_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                <p class="question">Utilisation de la langue Perse en GSI</p>
+            </div>
+            <div id="russe_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                <p class="question">Utilisation de la langue Russe en GSI </p>
+            </div>
+            <div id="chinois_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                <p class="question">Utilisation de la langue Chinoise en GSI</p>
+            </div>
+            <div id="japonais_gsi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                <p class="question">Utilisation de la langue Japonaise en GSI</p>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="pills-langues_cen" role="tabpanel" aria-labelledby="pills-langues_cen-tab">
+            <div class="container" style="margin-top: 10px;">
+                <div id="langues_cen-rows" class="row justify-content-center">
+                    <div id="francais_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Française en CEN</p>
+                    </div>
+        
+                    <div id="anglais_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Anglaise en CEN</p>
+                    </div>
+                    <div id="espagnol_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Espagnole en CEN</p>
+                    </div>
+                    <div id="tamazirth_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Tamazirth en CEN</p>
+                    </div>
+                    <div id="italien_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Italienne en CEN</p>
+                    </div>
+                    <div id="portugais_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Portugaise en CEN</p>
+                    </div>
+                    <div id="allemand_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Allemande en CEN</p>
+                    </div>
+                    <div id="perse_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Perse en CEN</p>
+                    </div>
+                    <div id="russe_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Russe en CEN </p>
+                    </div>
+                    <div id="chinois_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Chinoise en CEN</p>
+                    </div>
+                    <div id="japonais_cen" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                        <p class="question">Utilisation de la langue Japonaise en CEN</p>
+                    </div>
+                </div>
+            
+ </div>
+</div>
+
+                        <div class="tab-pane fade" id="pills-internet" role="tabpanel" aria-labelledby="pills-internet-stats">
+                            <div class="container" style="margin-top: 10px;">
+                                <div id="stats-rows" class="row justify-content-center">
+                                    <div id="wifi" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                        <p class="question">Connexion Wifi</p>
+                                    </div>
+                                    <div id="quatreg" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                        <p class="question">Connexion 4g</p>
+                                    </div>
+
+                                    
+                        
+                                   
+                                </div>
+                         </div>
+                    </div>
+                        <div class="tab-pane fade" id="pills-parcours" role="tabpanel" aria-labelledby="pills-parcours-stats">
+                            <div class="container" style="margin-top: 10px;">
+                                <div id="stats-rows" class="row justify-content-center">
+                                    <div id="parcours" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                        <p class="question">Parcours</p>
+                                    </div>
+                                  
+                            </div>
+                         </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-specialite" role="tabpanel" aria-labelledby="pills-specialite-stats">
+                        <div class="container" style="margin-top: 10px;">
+                            <div id="stats-rows" class="row justify-content-center">
+                                <div id="specialite_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                    <p class="question">Specialité M2 Thyp</p>
+                                </div>
+                                <div id="specialite_net" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                    <p class="question">Specialité M1 NET</p>
+                                </div>
+                              
+                        </div>
+                     </div>
+                </div>
+                <div class="tab-pane fade" id="pills-reseau_thyp" role="tabpanel" aria-labelledby="pills-reseau_thyp-stats">
+                    <div class="container" style="margin-top: 10px;">
+                        <div id="stats-rows" class="row justify-content-center">
+                            <div id="youtube_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                <p class="question">Specialité M2 Thyp</p>
+                            </div>
+                            <div id="linkedin_thyp" class='svg col-sm-3 mb-2 mr-2 ml-2 bg-dark'>
+                                <p class="question">Specialité M2 Thyp</p>
+                            </div>
+                            
+                          
+                    </div>
+                 </div>
+            </div>
+
+                       
+            </div>
+           
+        </div>
+        
+
+
+
+
+
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+
+
+
+
+
+
+
+
+
+</html>
+<script type="text/javascript">
+    let divContainers = document.getElementById("rows");
+    let divContainers_thyp = document.getElementById("rows_thyp");
+    let divContainers_net = document.getElementById("rows_net");
+    let divContainers_cen = document.getElementById("rows_cen");
+    let divContainers_gsi = document.getElementById("rows_gsi");
+
+    d3.csv("data.csv").then(function(data){
+       
+        Graph(data);
+       
+       
+    });
+
+    function Transfert(data){
+        for(let i = 0; i < data.length; i++){
+            let url_img = GetImage(data[i]["Votre photo"]);
+            divContainers.innerHTML += "<div class='profil col-sm-3 mb-2 mr-2 ml-2 bg-dark'> "
+            + "<img class='profil-img' src=" + url_img + "> "
+            + "<p class'profil-name'>" + "<p> Prénom: "+ data[i]["Votre prénom"] + "</p>" 
+            + "<p class'profil-surname>" + "<p> Nom: " + data[i]["Votre nom"] + "</p>"
+            + "<p class'profil-formation'>" + "<p> Parcours: " +  "<strong>"+ data[i]["Dans quel parcours êtes vous inscris ?"] + "</strong>" +"</p> "
+            + "<p class'profil-email'>" + "<p> Mail : " + "<a href=mailto:" +  data[i]["Votre mail"] + "</a>" + data[i]["Votre mail"] + "</p> "
+         
+            + "</div>";
+        }
+    }
+
+    function Thyp(data){
+        for(let i = 0; i < data.length;i++){
+            let url_img = GetImage(data[i]["Votre photo"]);
+            switch(data[i]["Dans quel parcours êtes vous inscris ?"]){
+                case "M2 THYP":
+                divContainers_thyp.innerHTML += "<div class='profil col-sm-3 mb-2 mr-2 ml-2 bg-dark'> "
+                    + "<img class='profil-img' src=" + url_img + "> "
+                    + "<p class'profil-name'>" + "<p style ='white'> Prénom: "+ data[i]["Votre prénom"] + "</p>" 
+                    + "<p class'profil-surname>" + "<p> Nom: " + data[i]["Votre nom"] + "</p>"
+                    + "<p class'profil-formation'>" + "<p> Parcours: " +  "<strong>"+ data[i]["Dans quel parcours êtes vous inscris ?"] + "</strong>" +"</p> "
+                    + "<p class'profil-email'>" + "<p> Mail : " + "<a href=mailto:" +  data[i]["Votre mail"] + "</a>" + data[i]["Votre mail"] + "</p> "
+                 
+                    + "</div>";
+              
+                    break;
+                default:
+                    break;
+
+            }
+        }
+    }
+
+    function Net(data){
+        for(let i = 0; i < data.length;i++){
+            let url_img = GetImage(data[i]["Votre photo"]);
+            switch(data[i]["Dans quel parcours êtes vous inscris ?"]){
+                case "M1 NET":
+                divContainers_net.innerHTML += "<div class='profil col-sm-3 mb-2 mr-2 ml-2 bg-dark'> "
+                    + "<img class='profil-img' src=" + url_img + "> "
+                    + "<p class'profil-name'>" + "<p> Prénom: "+ data[i]["Votre prénom"] + "</p>" 
+                    + "<p class'profil-surname>" + "<p> Nom: " + data[i]["Votre nom"] + "</p>"
+                    + "<p class'profil-formation'>" + "<p> Parcours: " +  "<strong>"+ data[i]["Dans quel parcours êtes vous inscris ?"] + "</strong>" +"</p> "
+                    + "<p class'profil-email'>" + "<p> Mail : " + "<a href=mailto:" +  data[i]["Votre mail"] + "</a>" + data[i]["Votre mail"] + "</p> "
+                 
+                    + "</div>";
+                    console.log(data[i]["Dans quel parcours êtes vous inscris ?"]);
+              
+                    break;
+                default:
+                    break;
+
+            }
+           
+        }
+    }
+
+    function Cen(data){
+        for(let i = 0; i < data.length;i++){
+            let url_img = GetImage(data[i]["Votre photo"]);
+            switch(data[i]["Dans quel parcours êtes vous inscris ?"]){
+                case "M1 CEN":
+                divContainers_cen.innerHTML += "<div class='profil col-sm-3 mb-2 mr-2 ml-2 bg-dark'> "
+                    + "<img class='profil-img' src=" + url_img + "> "
+                    + "<p class'profil-name'>" + "<p> Prénom: "+ data[i]["Votre prénom"] + "</p>" 
+                    + "<p class'profil-surname>" + "<p> Nom: " + data[i]["Votre nom"] + "</p>"
+                    + "<p class'profil-formation'>" + "<p> Parcours: " +  "<strong>"+ data[i]["Dans quel parcours êtes vous inscris ?"] + "</strong>" +"</p> "
+                    + "<p class'profil-email'>" + "<p> Mail : " + "<a href=mailto:" +  data[i]["Votre mail"] + "</a>" + data[i]["Votre mail"] + "</p> "
+                 
+                    + "</div>";
+              
+                    break;
+                default:
+                    break;
+
+            }
+        }
+    }
+
+    function Gsi(data){
+        for(let i = 0; i < data.length;i++){
+            let url_img = GetImage(data[i]["Votre photo"]);
+            switch(data[i]["Dans quel parcours êtes vous inscris ?"]){
+                case "M1 GSI":
+                divContainers_gsi.innerHTML += "<div class='profil col-sm-3 mb-2 mr-2 ml-2 bg-dark'> "
+                    + "<img class='profil-img' src=" + url_img + "> "
+                    + "<p class'profil-name'>" + "<p> Prénom: "+ data[i]["Votre prénom"] + "</p>" 
+                    + "<p class'profil-surname>" + "<p> Nom: " + data[i]["Votre nom"] + "</p>"
+                    + "<p class'profil-formation'>" + "<p> Parcours: " +  "<strong>"+ data[i]["Dans quel parcours êtes vous inscris ?"] + "</strong>" +"</p> "
+                    + "<p class'profil-email'>" + "<p> Mail : " + "<a href=mailto:" +  data[i]["Votre mail"] + "</a>" + data[i]["Votre mail"] + "</p> "
+                 
+                    + "</div>";
+                    console.log(data[i]["Dans quel parcours êtes vous inscris ?"]);
+              
+                    break;
+                default:
+                    break;
+
+            }
+        }
+    }
+
+    function GetImage(img){
+        let url = new URL(img);
+        let urlParam = new URLSearchParams(url.search);
+        let id = urlParam.get('id');
+        let urlTof = "https://drive.google.com/uc?id="+id+"&export=download";                        
+        return urlTof; 
+    }
+
+    function Graph(data){
+      
+       //Général
+       Transfert(data);
+        Parcours(data);
+       Computer(data);
+       Facebook(data);
+       Linkedin(data);
+       QuatreG(data);
+        Instagram(data);
+        Snapchat(data);
+        Telegram(data);
+        Youtube(data);
+        Discord(data);
+        Wifi(data);
+        Langue_francais(data);
+        Langue_anglais(data);
+        Langue_espagnol(data);
+        Langue_tamazirth(data);
+        Langue_italien(data);
+        Langue_portugais(data);
+        Langue_allemand(data); 
+        Langue_perse(data);
+        Langue_russe(data);
+        Langue_chinois(data);
+        Langue_japonais(data);
+
+
+        //THYP
+        Facebook_M2_Thyp(data);
+        Youtube_M2_Thyp(data);
+        LinkedIn_thyp(data);
+        Thyp(data);
+        Discord_thyp(data);
+        Specialite_thyp(data);
+        Snapchat_thyp(data);
+        Instagram_Thyp(data);
+        Telegram_Thyp(data);
+        
+        Langue_francais_thyp(data);
+        Langue_anglais_thyp(data);
+        Langue_espagnol_thyp(data);
+        Langue_tamazirth_thyp(data);
+        Langue_italien_thyp(data);
+        Langue_portugais_thyp(data);
+        Langue_allemand_thyp(data); 
+        Langue_perse_thyp(data);
+        Langue_russe_thyp(data);
+       
+        Langue_chinois_thyp(data);  
+        Langue_japonais_thyp(data);
+       
+
+        //CEN
+        Instagram_cen(data);
+        Youtube_cen(data);
+        Discord_cen(data);
+        Facebook_cen(data);
+        Snapchat_cen(data);
+        Linkedin_cen(data);
+        Telegram_cen(data);
+        Cen(data);
+        Langue_francais_cen(data);
+        Langue_anglais_cen(data);
+        Langue_espagnol_cen(data);
+        Langue_tamazirth_cen(data);
+        Langue_italien_cen(data);
+        Langue_portugais_cen(data);
+        Langue_allemand_cen(data); 
+        Langue_perse_cen(data);
+        Langue_russe_cen(data);
+        Langue_chinois_cen(data);  
+        Langue_japonais_cen(data);
+
+
+        
+       //Net
+       Instagram_net(data);
+        Youtube_net(data);
+        Discord_net(data);
+        Facebook_net(data);
+        Snapchat_net(data);
+        Linkedin_net(data);
+        Telegram_net(data);
+       Specialite_net(data);
+       Net(data);
+       Langue_francais_net(data);
+       Langue_anglais_net(data);
+       Langue_espagnol_net(data);
+       Langue_tamazirth_net(data);
+       Langue_italien_net(data);
+       Langue_portugais_net(data);
+       Langue_allemand_net(data); 
+       Langue_perse_net(data);
+       Langue_russe_net(data);
+      
+       Langue_chinois_net(data);  
+       Langue_japonais_net(data);
+        
+       //GSI
+       Gsi(data);
+       Instagram_gsi(data);
+       Youtube_gsi(data);
+       Discord_gsi(data);
+       Facebook_gsi(data);
+       Snapchat_gsi(data);
+       LinkedIn_gsi(data);
+       Telegram_gsi(data);
+       Langue_francais_gsi(data);
+       Langue_anglais_gsi(data);
+       Langue_espagnol_gsi(data);
+       Langue_tamazirth_gsi(data);
+       Langue_italien_gsi(data);
+       Langue_portugais_gsi(data);
+       Langue_allemand_gsi(data); 
+       Langue_perse_gsi(data);
+       Langue_russe_gsi(data);
+       Langue_chinois_gsi(data);  
+       Langue_japonais_gsi(data);
+        
+    }
+
+    
+    function Computer(data){
+        let info = {Oui: 0, Non: 0};
+        for(let i = 0; i < data.length; i++){
+            if(data[i]['Avez-vous un ordinateur personnel pour suivre les cours ?'] === "Oui"){
+                info.Oui++;
+            }
+            else{
+             info.Non++;
+            }
+        }
+        //console.log(info);
+        var width = 450
+            height = 450
+            margin = 40
+        var radius = Math.min(width, height) / 2 - margin
+        var svg = d3.select("#computer")
+        .append("svg")
+         .attr("width", width)
+         .attr("height", height)
+         .attr("viewBox", "0 0 450 450")
+         .append("g")
+         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+         var color = d3.scaleOrdinal()
+         .domain(info)
+         .range(d3.schemeCategory10);
+         var pie = d3.pie()
+         .value(function(d) {return d.value; })
+         var data_ready = pie(d3.entries(info))
+         var arcGenerator = d3.arc()
+         .innerRadius(150)
+         .outerRadius(radius);
+         svg
+         .selectAll('mySlices')
+         .data(data_ready)
+         .enter()
+         .append('path')
+             .attr('d', arcGenerator)
+             .attr('fill', function(d){ return(color(d.data.key)) })
+             .attr("stroke", "#C3D90A")
+             .style("stroke-width", "9px")
+             .style("opacity", 0.7);
+         svg
+         .selectAll('mySlices')
+         .data(data_ready)
+         .enter()
+         .append('text')
+         .text(function(d){ return d.data.key})
+         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
+         .style("text-anchor", "middle")
+         .style("font-size", 29)
+         .style("fill","white");
+    }
+
+    function Parcours(data){
+        let info = {"M1 CEN": 0, "M2 THYP": 0, "M1 NET": 0, "M1 GSI": 0};
+        for(let i = 0; i < data.length; i++){
+            switch(data[i]['Dans quel parcours êtes vous inscris ?']){
+                case "M1 CEN":
+                    info['M1 CEN']++;
+                    break;
+
+                case "M2 THYP":
+                    info['M2 THYP']++;
+                    break;
+                case "M1 NET":
+                    info['M1 NET']++;
+                    break;
+                case "M1 GSI":
+                    info['M1 GSI']++;
+                    break;
+                default:
+                    break;
+
+            }
+        }
+        //console.log(info);
+        var width = 450
+            height = 450
+            margin = 40
+        var radius = Math.min(width, height) / 2 - margin
+        var svg = d3.select("#parcours")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("viewBox", "0 0 450 450")
+        .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+        var color = d3.scaleOrdinal()
+        .domain(info)
+        .range(d3.schemeCategory10);
+        var pie = d3.pie()
+        .value(function(d) {return d.value; })
+        var data_ready = pie(d3.entries(info))
+        var arcGenerator = d3.arc()
+        .innerRadius(150)
+        .outerRadius(radius);
+        svg
+        .selectAll('mySlices')
+        .data(data_ready)
+        .enter()
+        .append('path')
+            .attr('d', arcGenerator)
+            .attr('fill', function(d){ return(color(d.data.key)) })
+            .attr("stroke", "#C3D90A")
+            .style("stroke-width", "9px")
+            .style("opacity", 0.7);
+        svg
+        .selectAll('mySlices')
+        .data(data_ready)
+        .enter()
+        .append('text')
+        .text(function(d){ return d.data.key})
+        .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
+        .style("text-anchor", "middle")
+        .style("font-size", 29)
+        .style("fill","white");
+
+    }
+
+   
+
+    function Wifi(data){
+        let info = {"Bonne": 0, "Moyenne": 0, "Mauvaise": 0, "Autre": 0};
+        for(let i = 0; i < data.length; i++){
+            if(data[i]['Votre connexion internet personnelle est : [WIFI]'].includes("bonne")){
+                info["Bonne"]++;
+            }
+            else if(data[i]['Votre connexion internet personnelle est : [WIFI]'].includes("moyenne")){
+                info["Moyenne"]++;
+            }
+            else if(data[i]['Votre connexion internet personnelle est : [WIFI]'].includes("mauvaise")){
+                info["Mauvaise"]++;
+            }
+            else {
+                info["Autre"]++;
+            }
+        }
+        //console.log(info);
+        var width = 450
+            height = 450
+            margin = 40
+        var radius = Math.min(width, height) / 2 - margin
+        var svg = d3.select("#wifi")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("viewBox", "0 0 450 450")
+        .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+        var color = d3.scaleOrdinal()
+        .domain(info)
+        .range(d3.schemeCategory10);
+        var pie = d3.pie()
+        .value(function(d) {return d.value; })
+        var data_ready = pie(d3.entries(info))
+        var arcGenerator = d3.arc()
+        .innerRadius(150)
+        .outerRadius(radius);
+        svg
+        .selectAll('mySlices')
+        .data(data_ready)
+        .enter()
+        .append('path')
+            .attr('d', arcGenerator)
+            .attr('fill', function(d){ return(color(d.data.key)) })
+            .attr("stroke", "#C3D90A")
+            .style("stroke-width", "9px")
+            .style("opacity", 0.7);
+        svg
+        .selectAll('mySlices')
+        .data(data_ready)
+        .enter()
+        .append('text')
+        .text(function(d){ return d.data.key})
+        .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
+        .style("text-anchor", "middle")
+        .style("font-size", 29)
+        .style("fill","white");
+    }
+
+   
+
+
+    function Wifi(data){
+        let info = {
+            "De qualité moyenne":0,
+            "De bonne qualité":0,
+            "De mauvaise qualité":0,
+            "Pas utilisé":0
+        };
+        for(let i = 0; i <data.length;i++){
+            switch(data[i]['Votre connexion internet personnelle est : [WIFI]']){
+                case "De qualité moyenne":
+                    info["De qualité moyenne"]++;
+                    break;
+                case "De bonne qualité":
+                   info["De bonne qualité"]++;
+                    break;
+                case "De mauvaise qualité":
+                  info["De mauvaise qualité"]++;
+                    break;
+
+                case "Pas utilisé":
+                    info['Pas utilisé']++;
+                    break;
+                default:
+                    break;
+
+            }
+        }
+        var width = 450
+        height = 450
+        margin = 40
+    var radius = Math.min(width, height) / 2 - margin
+    var svg = d3.select("#wifi")
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("viewBox", "0 0 450 450")
+    .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+    var color = d3.scaleOrdinal()
+    .domain(info)
+    .range(d3.schemeCategory10);
+    var pie = d3.pie()
+    .value(function(d) {return d.value; })
+    var data_ready = pie(d3.entries(info))
+    var arcGenerator = d3.arc()
+    .innerRadius(150)
+    .outerRadius(radius);
+    svg
+    .selectAll('mySlices')
+    .data(data_ready)
+    .enter()
+    .append('path')
+        .attr('d', arcGenerator)
+        .attr('fill', function(d){ return(color(d.data.key)) })
+        .attr("stroke", "#C3D90A")
+        .style("stroke-width", "9px")
+        .style("opacity", 0.7);
+    svg
+    .selectAll('mySlices')
+    .data(data_ready)
+    .enter()
+    .append('text')
+    .text(function(d){ return d.data.key})
+    .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
+    .style("text-anchor", "middle")
+    .style("font-size", 29)
+    .style("fill","white");
+
+}
+
+
+
+
+function Specialite_net(data){
+   
+    let info = {
+
+        "Technique son":0,
+        "Graphiste":0,
+        "Concepteur":0,
+        "Développeur":0,
+        "Chef de projet":0,
+        "Community manager":0,
+        "Rédacteur":0,
+        "Ingénieur informatique":0,
+        "Data analyste":0
+    };
+  
+     for(let i = 0; i< data.length;i++){
+
+        if(data[i]['Dans quel parcours êtes vous inscris ?'] === "M1 NET" && data[i]['Vos spécialités'].includes("Data analyste")){
+            info["Data analyste"]++
+           }
+       else if(data[i]['Dans quel parcours êtes vous inscris ?'] === "M1 NET" && data[i]['Vos spécialités'].includes("Ingénieur informatique")){
+            info["Ingénieur informatique"]++
+        }
+       else if(data[i]['Dans quel parcours êtes vous inscris ?'] === "M1 NET" && data[i]['Vos spécialités'].includes("Concepteur")){
+           info["Concepteur"]++
+       }
+       else if(data[i]['Dans quel parcours êtes vous inscris ?'] === "M1 NET" && data[i]['Vos spécialités'].includes("Graphiste")){
+        info["Graphiste"]++
+       }
+       else if(data[i]['Dans quel parcours êtes vous inscris ?'] === "M1 NET" && data[i]['Vos spécialités'].includes("Chef de projet")){
+        info["Chef de projet"]++
+       }
+      
+
+           
+
+        
+       
+      
+    }
+    console.log(info);
+     var width = 450
+         height = 450
+         margin = 40
+     var radius = Math.min(width, height) / 2 - margin
+     var svg = d3.select("#specialite_net")
+     .append("svg")
+     .attr("width", width)
+     .attr("height", height)
+     .attr("viewBox", "0 0 450 450")
+     .append("g")
+     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+     var color = d3.scaleOrdinal()
+     .domain(info)
+     .range(d3.schemeCategory10);
+     var pie = d3.pie()
+     .value(function(d) {return d.value; })
+     var data_ready = pie(d3.entries(info))
+     var arcGenerator = d3.arc()
+     .innerRadius(150)
+     .outerRadius(radius);
+     svg
+     .selectAll('mySlices')
+     .data(data_ready)
+     .enter()
+     .append('path')
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .style("opacity", 0.7);
+     svg
+     .selectAll('mySlices')
+     .data(data_ready)
+     .enter()
+     .append('text')
+     .text(function(d){ return d.data.key})
+     .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
+     .style("text-anchor", "middle")
+     .style("font-size", 29)
+     .style("fill","white");
+ 
+}
+
+
+    function QuatreG(data){
+        let info = {
+            "De qualité moyenne":0,
+            "De bonne qualité":0,
+            "De mauvaise qualité":0,
+            "Pas utilisé":0
+        };
+        for(let i = 0; i <data.length;i++){
+            switch(data[i]['Votre connexion internet personnelle est : [4G]']){
+                case "De qualité moyenne":
+                    info["De qualité moyenne"]++;
+                    break;
+                case "De bonne qualité":
+                   info["De bonne qualité"]++;
+                    break;
+                case "De mauvaise qualité":
+                  info["De mauvaise qualité"]++;
+                    break;
+
+                case "Pas utilisé":
+                    info['Pas utilisé']++;
+                    break;
+                default:
+                    break;
+
+            }
+        }
+        var width = 450
+        height = 450
+        margin = 40
+    var radius = Math.min(width, height) / 2 - margin
+    var svg = d3.select("#quatreg")
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("viewBox", "0 0 450 450")
+    .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+    var color = d3.scaleOrdinal()
+    .domain(info)
+    .range(d3.schemeCategory10);
+    var pie = d3.pie()
+    .value(function(d) {return d.value; })
+    var data_ready = pie(d3.entries(info))
+    var arcGenerator = d3.arc()
+    .innerRadius(150)
+    .outerRadius(radius);
+    svg
+    .selectAll('mySlices')
+    .data(data_ready)
+    .enter()
+    .append('path')
+        .attr('d', arcGenerator)
+        .attr('fill', function(d){ return(color(d.data.key)) })
+        .attr("stroke", "#C3D90A")
+        .style("stroke-width", "9px")
+        .style("opacity", 0.7);
+    svg
+    .selectAll('mySlices')
+    .data(data_ready)
+    .enter()
+    .append('text')
+    .text(function(d){ return d.data.key})
+    .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
+    .style("text-anchor", "middle")
+    .style("font-size", 29)
+    .style("fill","white");
+
+}
+
+
+
+
+    
+
+    
+    
+
+    
+
+</script>
