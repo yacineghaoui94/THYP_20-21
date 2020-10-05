@@ -1,0 +1,33 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.student-box {
+    width: 320px;
+    height: 420px;
+    border-radius: 2%;
+    box-shadow: 5px 10px 18px #888888;
+    margin-left: 22px;
+}
+
+.form-row1 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+    .form-row1 > .col,
+    .form-row1 > [class*="col-"] {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
