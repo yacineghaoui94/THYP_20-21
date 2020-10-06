@@ -22,7 +22,7 @@ class Student{
         ,"Langues":"Langues"
         ,"CMS":"CMS"
         ,"Quels réseaux sociaux":"Réseaux sociaux"
-        }
+        };
 
     id;
     details;
@@ -35,8 +35,8 @@ class Student{
         for(let i in etud){
 
             if(i.indexOf("[") > 0){
-                let quest = this.vals[i.substring(0, i.indexOf("[")-1)];
-                let prop = i.substring(i.indexOf("[")+1,i.indexOf("]"));
+                let quest = this.vals[i.substring(0, i.indexOf("[") - 1)];
+                let prop = i.substring(i.indexOf("[") + 1,i.indexOf("]"));
                 let v = etud[i];
                 let n = this.vals[v];
 
@@ -60,14 +60,6 @@ class Student{
             }else{
                 this.details[i] = etud[i];
             }
-
-            // let quest = i.indexOf("[") > 0 ? this.vals[i.substring(0, i.indexOf("[")-1)] : this.vals[i];// (this.vals[i]!=undefined)? console.log(i, "-", etud[i], "-", this.vals[i]):false; 
-            // let prop = i.substring(i.indexOf("[")+1,i.indexOf("]")); 
-            // let v = etud[i];
-            // let n = this.vals[v];
         }
     }
-
-    
-
 }
