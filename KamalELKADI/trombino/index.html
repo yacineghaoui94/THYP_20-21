@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Promotion 2020/2021</title>
+
+        <link rel="stylesheet" href="./css/style.css">
+        <style type="text">
+                p {
+                    font-family: 'Work Sans', sans-serif;
+                }
+
+                .question{
+                    font-size: larger;
+                }
+
+                #title h1{
+                    font-family: 'Crimson Text', serif;
+                    height: 10%;
+                    margin-bottom: 5px;
+                    text-align: center;
+                }
+
+                #title{
+                    border-bottom: 1px solid #e8eceb;
+                    margin-bottom: 15px;
+                    background-color: whitesmoke;
+                }
+
+
+                .profil-img {
+                    border-radius: 1rem;
+                    width: 100%;
+                    height: auto;
+                    margin-bottom: 15px;
+                    margin-top: 15px;
+                }
+
+                .profil, .svg{
+                    border: 1px solid #CACFD2;
+                    border-radius: 1rem;
+
+                }
+
+        
+
+                #myTabContent{
+                    text-align: center;
+                    margin-bottom: 30px;
+                }
+
+                .profil{
+                    text-align: left;
+                }
+
+                span{
+                    font-style: italic;
+                    color: darkgray;
+                }
+
+                .hide{
+                    display: none;
+                }
+        </style>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+    </head>
+
+    <body class="bg-light">
+        <div id="header">
+            <div id="title" >
+                <h1>Mention Humanités Numériques <small>2020/2021</small></h1>
+            </div>
+            <div id="facets">
+               
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="pills-profils" role="tabpanel" aria-labelledby="pills-profils-tab">
+                        <div class="dropdown">
+                            <button id="btn_menu" class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+                              Tous
+                            </button>
+                            <div class="dropdown-menu">
+                              <a id="menu_Tous" class="dropdown-item" onclick="Tri('Tous')" style="cursor: pointer;">Tous</a>
+                              <a id="menu_M1_CEN" class="dropdown-item"  onclick="Tri('M1 CEN')" style="cursor: pointer;">M1 CEN</a>
+                              <a id="menu_M1_NET" class="dropdown-item" onclick="Tri('M1 NET')" style="cursor: pointer;">M1 NET</a>
+                              <a id="menu_M2_THYP" class="dropdown-item" onclick="Tri('M2 THYP')" style="cursor: pointer;">M2 THYP</a>
+                              <a id="menu_M1_GSI" class="dropdown-item" onclick="Tri('M1 GSI')" style="cursor: pointer;">M1 GSI</a>
+                             
+                            </div>
+                            <input id="search" type="text" placeholder="Recherche">
+                        </div>
+                        <div class="container" style="margin-top: 10px;">
+                            <div id="rows" class="row justify-content-center "></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="./js/facette.js"></script>
+    </body>
+</html>
