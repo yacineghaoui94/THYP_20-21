@@ -31,6 +31,7 @@ class Student{
     constructor(etud, id){
         this.id = id;
         this.details = {};
+        this.facet = {};
 
         for(let i in etud){
 
@@ -42,11 +43,17 @@ class Student{
 
                 if(!this.details[quest])
                     this.details[quest] = new Map();
+
+                // if(!this.facet[quest])
+                //     this.facet[quest] = new Map();
                 
                 // if(!n)
                 //     n = this.vals[v.substring(0, v.indexOf(",")-1)];
                 
                 this.details[quest].set(prop, {v, n});
+                // this.facet[quest].set(prop, {"expression" : {v, n}});
+                this.addFacet(quest, prop, v, n, id);
+
 
             }else if(this.vals[i] != undefined){
                 if(this.vals[i] == "Compte"){
@@ -60,6 +67,23 @@ class Student{
             }else{
                 this.details[i] = etud[i];
             }
+        }
+    }
+
+    addFacet(quest, prop, v, n, id){
+// console.log(id);
+        if(!this.facet[quest])
+            this.facet[quest] = new Facet(quest);
+        
+        let index = this.facet[quest].indexOfExpression(v);
+        // console.log(id);
+        if(/*this.facet[quest].expression.length == 0 ||*/ index == -1){
+            // console.log(id, v);
+            this.facet[quest].addNewExpression(prop, v, n, id);
+        }else{
+            // console.log("ok");
+            this.facet[quest].addToValue(index, n);
+            this.facet[quest].addId(index, id);
         }
     }
 }

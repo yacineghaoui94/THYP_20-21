@@ -11,10 +11,53 @@ d3.csv(file_csv)
     .then((data) => {
         // console.log(data);
         setData(data);
-    })
-    .catch((error) => {
-        console.error("Error loading the file_csv");
     });
+
+function getUrl(url){
+    //merci à https://davidwalsh.name/query-string-javascript
+    // https://developers.google.com/web/updates/2016/01/urlsearchparams?hl=en
+    let newUrl = new URL(url);
+    let urlParam = new URLSearchParams(newUrl.search);
+    let id = urlParam.get('id');
+    //merci à https://stackoverflow.com/questions/50664868/get-pictures-from-google-drive-folder-with-javascript-to-my-website
+    let urlTof = "https://drive.google.com/uc?id=" + id + "&export=download";                      
+    return urlTof;
+}
+
+// function createDiv(className, style){
+//     let newElt = document.createElement("div");
+//     newElt.className = className;
+//     newElt.style = style;
+//     return newElt;
+// }
+
+function createBalise(balise, className, src, style){
+    let newElt = document.createElement(balise);
+    newElt.className = className;
+    newElt.src = src;
+    newElt.style = style;
+    return newElt;
+}
+
+// function createImg(src, className, style){
+//     let newEltImg = document.createElement("IMG");
+//     newEltImg.src = src;
+//     newEltImg.className = className;
+//     newEltImg.style = style;
+//     return newEltImg;
+// }
+
+function setData(data){
+    dataCsv = data;
+    dataCsv.forEach(function(etud, id) {
+        let newEtud = new Student(etud, id);
+        studList.push(newEtud);
+    });
+
+    studList.forEach(stud => {
+        studCards.appendChild(createCards_1(stud));
+    });
+}
 
 function getUrl(url){
     //merci à https://davidwalsh.name/query-string-javascript
@@ -78,16 +121,3 @@ function createCards_1(stud){
 
     return newElt;
 }
-
-function setData(data){
-    dataCsv = data;
-    dataCsv.forEach(function(etud, id) {
-        let newEtud = new Student(etud, id);
-        studList.push(newEtud);
-    });
-
-    studList.forEach(stud => {
-        studCards.appendChild(createCards_1(stud));
-    });
-}
-
