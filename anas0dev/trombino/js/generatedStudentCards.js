@@ -1,6 +1,7 @@
 "use strict";
 
-var studList = new Array();
+let studList = new Array();
+let facet = {};
 let studCards = document.getElementById("studCards");
 let dataCsv;
 
@@ -50,8 +51,10 @@ function createBalise(balise, className, src, style){
 function setData(data){
     dataCsv = data;
     dataCsv.forEach(function(etud, id) {
-        let newEtud = new Student(etud, id);
-        studList.push(newEtud);
+        let newStud = new Student(etud, id, facet);
+        facet = newStud.facet;
+        newStud.cleanFacet();
+        studList.push(newStud);
     });
 
     studList.forEach(stud => {

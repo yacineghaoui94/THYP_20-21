@@ -28,10 +28,10 @@ class Student{
     details;
     facet;
 
-    constructor(etud, id){
+    constructor(etud, id, facet){
         this.id = id;
         this.details = {};
-        this.facet = {};
+        this.facet = facet;
 
         for(let i in etud){
 
@@ -52,6 +52,7 @@ class Student{
                 
                 this.details[quest].set(prop, {v, n});
                 // this.facet[quest].set(prop, {"expression" : {v, n}});
+                
                 this.addFacet(quest, prop, v, n, id);
 
 
@@ -71,19 +72,34 @@ class Student{
     }
 
     addFacet(quest, prop, v, n, id){
-// console.log(id);
-        if(!this.facet[quest])
-            this.facet[quest] = new Facet(quest);
         
-        let index = this.facet[quest].indexOfExpression(v);
-        // console.log(id);
-        if(/*this.facet[quest].expression.length == 0 ||*/ index == -1){
+// console.log(this.facet[quest], quest);
+        if(!this.facet[quest]){
+            // console.log("ok");
+            this.facet[quest] = new FacetList(quest);
+        }
+        
+        if(!this.facet[quest].facetList[prop]){
+            // console.log("ok", this.facet[quest][prop]);
+            this.facet[quest].facetList[prop] = new Facet(prop);
+            
+        }
+        // console.log("okokok");
+        let index = this.facet[quest].facetList[prop].indexOfExpression(v);
+        // if(index != -1)
+            // console.log(quest, prop, v);
+
+        if(this.facet[quest].facetList[prop].expression.length == 0 || index == -1){
             // console.log(id, v);
-            this.facet[quest].addNewExpression(prop, v, n, id);
+            this.facet[quest].facetList[prop].addNewExpression(prop, v, n, id);
         }else{
             // console.log("ok");
-            this.facet[quest].addToValue(index, n);
-            this.facet[quest].addId(index, id);
+            this.facet[quest].facetList[prop].addToValue(index, n);
+            this.facet[quest].facetList[prop].addId(index, id);
         }
+    }
+
+    cleanFacet(){
+        this.facet = undefined;
     }
 }

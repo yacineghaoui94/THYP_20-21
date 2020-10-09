@@ -24,9 +24,12 @@ class Facet {
         this.values.push(value);
         // newLength = this.id.push(new Array());
         // this.id[newLength - 1] = id;
-        this.id.set(this.length, new Array());
-        this.id.get(this.length).push(id);
-        // console.log(this.id.get(this.length));
+        let newId = new Array();
+        newId.push(id);
+        this.id.set(this.length, newId);
+        // console.log("================", this.id, this.id.get(this.length));
+        // this.id.set(this.length, this.id.get(this.length).push(id));
+        // console.log(this.id.get(this.length)[this.id.get(this.length).length-1]);
         this.expressionLength.push(1);
         this.length++;
 
@@ -43,8 +46,12 @@ class Facet {
     }
 
     addId(indexOfExpression, id){
-        // console.log(id, this.id.get(indexOfExpression));
         this.id.get(indexOfExpression).push(id);
+        this.id.set(indexOfExpression, this.id.get(indexOfExpression));
         this.expressionLength[indexOfExpression]++;
     }
+
+    // get facet(){
+    //     return this.facet;
+    // }
 }
