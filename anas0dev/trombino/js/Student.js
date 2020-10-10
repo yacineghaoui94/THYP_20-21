@@ -34,12 +34,15 @@ class Student{
         this.facet = facet;
 
         for(let i in etud){
-
+            let quest = this.vals[i.substring(0, i.indexOf("[") - 1)];
+            let prop = i.substring(i.indexOf("[") + 1,i.indexOf("]"));
+            let v = etud[i];
+            let n = this.vals[v];
             if(i.indexOf("[") > 0){
-                let quest = this.vals[i.substring(0, i.indexOf("[") - 1)];
-                let prop = i.substring(i.indexOf("[") + 1,i.indexOf("]"));
-                let v = etud[i];
-                let n = this.vals[v];
+                // let quest = this.vals[i.substring(0, i.indexOf("[") - 1)];
+                // let prop = i.substring(i.indexOf("[") + 1,i.indexOf("]"));
+                // let v = etud[i];
+                // let n = this.vals[v];
 
                 if(!this.details[quest])
                     this.details[quest] = new Map();
@@ -64,6 +67,9 @@ class Student{
                     this.details[this.vals[i]].set(compte, etud[i]);
                 }else{
                     this.details[this.vals[i]] = etud[i];
+                }
+                if(this.vals[i] != "Objectifs"){
+                    this.addFacet(this.vals[i], etud[i], v, n, id);
                 }
             }else{
                 this.details[i] = etud[i];
