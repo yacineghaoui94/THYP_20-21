@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js" defer></script>
+    <script src="https://d3js.org/d3-scale.v3.min.js" defer></script>
+    <script src="https://d3js.org/d3-axis.v2.min.js" defer></script>
+    <script src="app3.js" defer></script>
+    <title>D3_JS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat',sans-serif;
+}
+nav{
+  background: rgba(0,0,0,1);
+  padding: 5px 40px;
+}
+nav ul{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+nav ul li{
+  padding: 15px 0;
+  cursor: pointer;
+}
+nav ul li.items{
+  size:20px;
+  position: relative;
+  width: auto;
+  margin: 0 16px;
+  text-align: center;
+  order: 3;
+  align-self: center;
+}
+nav ul li.items:after{
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: 5px;
+  height: 2px;
+  width: 100%;
+  background: #33ffff;
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+nav ul li.items:hover:after{
+  opacity: 1;
+  bottom: 8px;
+}
+nav ul li.logo{
+  flex: 1;
+  color: rgb(255, 255, 255);
+  background-color: navy;
+  background-size: 20px;
+  border-radius: 2ch;
+  text-align: center;
+  font-size: 33px;
+  font-weight: 800;
+  cursor: default;
+}
+nav ul li.logo:hover{
+  opacity: 0.75;
+  bottom: 8px; 
+  cursor: pointer;
+  color: navy;
+  background-color: white;
+}
+nav ul li a{
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  transition: .4s;
+}
+a:hover{
+  cursor: pointer;
+  font-size: 14px;
+  transition: .4s; 
+}
+nav ul li:hover a{
+  color: cyan;
+}
+nav ul li i{
+  font-size: 23px;
+}
+nav ul li.btn{
+  display: none;
+}
+nav ul li.btn.hide i:before{
+  content: '\f00d';
+}
+@media all and (max-width: 900px){
+  nav{
+    padding: 5px 30px;
+  }
+  nav ul li.items{
+    width: 100%;
+    display: none;
+  }
+  nav ul li.items.show{
+    display: block;
+  }
+  nav ul li.btn{
+    display: block;
+  }
+  nav ul li.items:hover{
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px #33ffff,
+                inset 0 0 10px #66ffff;
+  }
+  nav ul li.items:hover:after{
+    opacity: 0;
+  }
+}
+
+  </style>
+</head>
+<body style="background-color: rgba(0, 0, 0, 1);" id="demo">
+  <nav>
+    <br/><br/> 
+ 
+    <ul>
+<li class="items" id="M1CEN" onclick="fonction(id)"><a href="#">M1 CEN</a></li>
+<li class="items" id="M1GSI" onclick="fonction(id)"><a href="#">M1 GSI</a></li>
+<li class="items" id="M1NET" onclick="fonction(id)"><a href="#">M1 NET</a></li>
+<li class="items" id="M1AVUN" onclick="fonction(id)"><a href="#">M1 AVUN</a></li>
+<li class="items" id="M2AVUN" onclick="fonction(id)"><a href="#">M2 AVUN</a></li>
+<li class="items" id="M2THYP" onclick="fonction(id)"><a href="#">M2 THYP</a></li>
+<li class="logo" onclick="statistiquesFonction()"> Cliquez ici pour voir les statistiques</li>
+<li class="btn"><a href="#"><i class="fas fa-bars"></i></a></li>
+</ul>
+<br/><br/>
+</nav>
+  <script>
+    $(document).ready(function(){
+      $('.btn').click(function(){
+        $('.items').toggleClass("show");
+        $('ul li').toggleClass("hide");
+      });
+    });
+  </script>
+  <div class="container">
+      <div class="row" id="rowCards">
+      </div>
+  </div>
+</body>
+</html>
