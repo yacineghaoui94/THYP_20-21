@@ -47,17 +47,11 @@ class Student{
                 if(!this.details[quest])
                     this.details[quest] = new Map();
 
-                // if(!this.facet[quest])
-                //     this.facet[quest] = new Map();
-                
                 // if(!n)
                 //     n = this.vals[v.substring(0, v.indexOf(",")-1)];
                 
-                this.details[quest].set(prop, {v, n});
-                // this.facet[quest].set(prop, {"expression" : {v, n}});
-                
+                this.details[quest].set(prop, {v, n});                
                 this.addFacet(quest, prop, v, n, id);
-
 
             }else if(this.vals[i] != undefined){
                 if(this.vals[i] == "Compte"){
@@ -79,27 +73,19 @@ class Student{
 
     addFacet(quest, prop, v, n, id){
         
-// console.log(this.facet[quest], quest);
         if(!this.facet[quest]){
-            // console.log("ok");
             this.facet[quest] = new FacetList(quest);
         }
         
         if(!this.facet[quest].facetList[prop]){
-            // console.log("ok", this.facet[quest][prop]);
-            this.facet[quest].facetList[prop] = new Facet(prop);
-            
+            this.facet[quest].facetList[prop] = new Facet(prop); 
         }
-        // console.log("okokok");
+
         let index = this.facet[quest].facetList[prop].indexOfExpression(v);
-        // if(index != -1)
-            // console.log(quest, prop, v);
 
         if(this.facet[quest].facetList[prop].expression.length == 0 || index == -1){
-            // console.log(id, v);
             this.facet[quest].facetList[prop].addNewExpression(prop, v, n, id);
         }else{
-            // console.log("ok");
             this.facet[quest].facetList[prop].addToValue(index, n);
             this.facet[quest].facetList[prop].addId(index, id);
         }

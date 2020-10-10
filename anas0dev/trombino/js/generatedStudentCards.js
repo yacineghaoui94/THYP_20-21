@@ -1,9 +1,16 @@
 "use strict";
 
-let studList = new Array();
-let facet = {};
-let studCards = document.getElementById("studCards");
+let studListAll = new Array();
+let studListDisplay;
+
 let dataCsv;
+
+let facet = {};
+
+let studCards = document.getElementById("studCards");
+let searchButton = document.getElementById("searchButton");
+let searchInput = document.getElementById("searchInput");
+
 
 let file_csv = "./data/data.csv";
 
@@ -54,12 +61,14 @@ function setData(data){
         let newStud = new Student(etud, id, facet);
         facet = newStud.facet;
         newStud.cleanFacet();
-        studList.push(newStud);
+        studListAll.push(newStud);
     });
 
-    studList.forEach(stud => {
-        studCards.appendChild(createCards_1(stud));
-    });
+    studListDisplay = studListAll;
+    generateCards(studListDisplay);
+    // studListDisplay.forEach(stud => {
+    //     studCards.appendChild(createCards_1(stud));
+    // });
 }
 
 function getUrl(url){
@@ -97,13 +106,13 @@ function createBalise(balise, className, src, style){
 // }
 
 function createCards_1(stud){
-    let newElt = createBalise("div","card mb-3");
+    let newElt = createBalise("div","card mb-3 studCard");
     let newElt2 = createBalise("div","row no-gutters");
     let newElt3 = createBalise("div","col-md-4 bg-white");
     let newImg = createBalise("img", "card-img", getUrl(stud.details["Votre photo"]));
     let newElt4 = createBalise("div","col-md-8");
     let newElt5 = createBalise("div","card-body");
-    let newTitle = createBalise("h5", "card-title");
+    let newTitle = createBalise("h5", "card-title studName");
     newTitle.appendChild(document.createTextNode(stud.details["Votre prénom"] + " " + stud.details["Votre nom"].toUpperCase()));
     let newSubTitle = createBalise("p", "card-text");
     newSubTitle.appendChild(document.createTextNode(stud.details["Parcours"]));
@@ -124,3 +133,30 @@ function createCards_1(stud){
 
     return newElt;
 }
+
+function generateCards(CardsList){
+    CardsList.forEach(stud => {
+        studCards.appendChild(createCards_1(stud));
+    });
+}
+
+function filterStudByName(){
+    let nameSearched = searchInput.value.toLowerCase();
+    let studName = document.getElementsByClassName("studName");
+    let cards = document.getElementsByClassName("studCard");
+
+    for(let i = 0; i < studName.length; i++){
+        if(studName[i].textContent.toLowerCase().indexOf(nameSearched) == -1){
+            console.log(cards[i].style.display);
+            cards[i].style.display = "none";
+        }else{
+            cards[i].style.display = "";
+        }
+    }
+}
+
+searchButton.onclick = filterStudByName;
+searchInput.addEventListener("keyup", e => {
+        filterStudByName();
+});
+
