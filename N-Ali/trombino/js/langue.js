@@ -1,104 +1,35 @@
- //facebook
-    function Facebook(data){
-        let info = {
-            "souvent":0,
-            "je suis accro":0,
-            "jamais":0,
-            "rarement":0
-         };
-         for(let i = 0; i < data.length;i++){
-             if(data[i]['Quels réseaux sociaux [Facebook]'].includes("souvent")){
-                 info['souvent']++;
-             }
-             else if(data[i]['Quels réseaux sociaux [Facebook]'].includes("je suis accro")){
-                 info['je suis accro']++;
-             }
-             else if(data[i]['Quels réseaux sociaux [Facebook]'].includes("jamais")){
-                 info['jamais']++;
-             }
-             else{
-                 info['rarement']++;
-             }
-         }
-         var width = 450
-             height = 450
-             margin = 40
-         var radius = Math.min(width, height) / 2 - margin
-         var svg = d3.select("#facebook")
-         .append("svg")
-         .attr("width", width)
-         .attr("height", height)
-         .attr("viewBox", "0 0 450 450")
-         .append("g")
-         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-         var color = d3.scaleOrdinal()
-         .domain(info)
-         .range(d3.schemeCategory10);
-         var pie = d3.pie()
-         .value(function(d) {return d.value; })
-         var data_ready = pie(d3.entries(info))
-         var arcGenerator = d3.arc()
-         .innerRadius(150)
-         .outerRadius(radius);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('path')
-         .attr('d', arcGenerator)
-         .attr('fill', function(d){ return(color(d.data.key)) })
-         .attr("stroke", "#C3D90A")
-         .style("stroke-width", "9px")
-         .on('mouseover', function (d, i) {
-            d3.select(this).transition()
-                .duration('50')
-                .attr('opacity', '.35');
-            div.transition()
-                .duration(50)
-                .style("opacity", 1);
-            div.html(d.data.key + "<br />" + d.value + "/62")
-                .style("left", (d3.event.pageX + 10) + "px")
-                .style("top", (d3.event.pageY - 15) + "px");
-            })
-            .on('mouseout', function (d, i) {
-                d3.select(this).transition()
-                    .duration('50')
-                    .attr('opacity', '1');
-                div.transition()
-                    .duration('50')
-                    .style("opacity", 0);
-            });
-     }
-    
-     function Linkedin(data){
-         let info = {
-             "souvent":0,
-             "rarement":0,
-             "jamais":0,
-             "je suis accro":0
-         };
-         for(let i = 0; i <data.length;i++){
-             if(data[i]['Quels réseaux sociaux [LinkedIn]'].includes('souvent')){
-                 info['souvent']++;
-             }
-             else if(data[i]['Quels réseaux sociaux [LinkedIn]'].includes('rarement')){
-                info['rarement']++;
-            }
-            else if(data[i]['Quels réseaux sociaux [LinkedIn]'].includes('jamais')){
-                info['jamais']++;
-         }
-         else{
-            info['je suis accro']++;
-         }
-        }
-
-         //console.log(info);
-         var width = 450
-             height = 450
-             margin = 40
-         var radius = Math.min(width, height) / 2 - margin
-         var svg = d3.select("#linkedin")
-         .append("svg")
+function Langue_francais(data){
+    let info = {
+        "je suis expert(e)":0,
+        "je connais bien":0,
+        "je connais un peu":0,
+        "je ne connais pas du tout":0
+    };
+    for(let i = 0; i< data.length;i++){
+       switch(data[i]['Langues [Français]']){
+           case "je suis expert(e)":
+                info["je suis expert(e)"]++;
+                break;
+            case "je connais bien":
+                info["je connais bien"]++;
+                break;
+            case "je connais un peu":
+                info["je connais un peu"]++;
+                break;
+            case "je ne connais pas du tout":
+                info["je ne connais pas du tout"]++;
+                break;
+            default:
+            break;
+       }
+    }
+    //console.log(info);
+     var width = 450
+         height = 450
+         margin = 40
+     var radius = Math.min(width, height) / 2 - margin
+     var svg = d3.select("#francais")
+     .append("svg")
          .attr("width", width)
          .attr("height", height)
          .attr("viewBox", "0 0 450 450")
@@ -122,14 +53,14 @@
              .attr('fill', function(d){ return(color(d.data.key)) })
              .attr("stroke", "#C3D90A")
              .style("stroke-width", "9px")
-             .style("opacity", 0.7) .on('mouseover', function (d, i) {
+             .on('mouseover', function (d, i) {
                 d3.select(this).transition()
                     .duration('50')
-                    .attr('opacity', '.85');
+                    .attr('opacity', '.35');
                 div.transition()
                     .duration(50)
                     .style("opacity", 1);
-                div.html(d.data.key + "<br />" + d.value + "%")
+                div.html(d.data.key + "<br />" + d.value + "/62")
                     .style("left", (d3.event.pageX + 10) + "px")
                     .style("top", (d3.event.pageY - 15) + "px");
                 })
@@ -141,43 +72,118 @@
                         .duration('50')
                         .style("opacity", 0);
                 });
-        
-     }
-     
-    
+ 
+}
 
-    function Telegram(data){
-        let info = {
-            "souvent":0,
-            "rarement":0,
-            "jamais":0,
-            "je suis accro":0
-        };
-        for(let i = 0; i< data.length;i++){
-           switch(data[i]['Quels réseaux sociaux [telegram]']){
-               case "souvent":
-                    info["souvent"]++;
-                    break;
-                case "rarement":
-                    info["rarement"]++;
-                    break;
-                case "jamais":
-                    info["jamais"]++;
-                    break;
-                case "je suis accro":
-                    info["je suis accro"]++;
-                    break;
-                default:
+function Langue_anglais(data){
+    let info = {
+        "je suis expert(e)":0,
+        "je connais bien":0,
+        "je connais un peu":0,
+        "je ne connais pas du tout":0
+    };
+    for(let i = 0; i< data.length;i++){
+       switch(data[i]['Langues [Anglais]']){
+           case "je suis expert(e)":
+                info["je suis expert(e)"]++;
                 break;
-           }
-        }
-        //console.log(info);
-         var width = 450
-             height = 450
-             margin = 40
-         var radius = Math.min(width, height) / 2 - margin
-         var svg = d3.select("#telegram")
-         .append("svg")
+            case "je connais bien":
+                info["je connais bien"]++;
+                break;
+            case "je connais un peu":
+                info["je connais un peu"]++;
+                break;
+            case "je ne connais pas du tout":
+                info["je ne connais pas du tout"]++;
+                break;
+            default:
+            break;
+       }
+    }
+    //console.log(info);
+     var width = 450
+         height = 450
+         margin = 40
+     var radius = Math.min(width, height) / 2 - margin
+     var svg = d3.select("#anglais")
+     .append("svg")
+     .attr("width", width)
+     .attr("height", height)
+     .attr("viewBox", "0 0 450 450")
+     .append("g")
+     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+     var color = d3.scaleOrdinal()
+     .domain(info)
+     .range(d3.schemeCategory10);
+     var pie = d3.pie()
+     .value(function(d) {return d.value; })
+     var data_ready = pie(d3.entries(info))
+     var arcGenerator = d3.arc()
+     .innerRadius(150)
+     .outerRadius(radius);
+     svg
+     .selectAll('mySlices')
+     .data(data_ready)
+     .enter()
+     .append('path')
+     .attr('d', arcGenerator)
+     .attr('fill', function(d){ return(color(d.data.key)) })
+     .attr("stroke", "#C3D90A")
+     .style("stroke-width", "9px")
+     .on('mouseover', function (d, i) {
+        d3.select(this).transition()
+            .duration('50')
+            .attr('opacity', '.35');
+        div.transition()
+            .duration(50)
+            .style("opacity", 1);
+        div.html(d.data.key + "<br />" + d.value + "/62")
+            .style("left", (d3.event.pageX + 10) + "px")
+            .style("top", (d3.event.pageY - 15) + "px");
+        })
+        .on('mouseout', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '1');
+            div.transition()
+                .duration('50')
+                .style("opacity", 0);
+        });
+ 
+}
+
+function Langue_espagnol(data){
+    let info = {
+        "je suis expert(e)":0,
+        "je connais bien":0,
+        "je connais un peu":0,
+        "je ne connais pas du tout":0
+    };
+    for(let i = 0; i< data.length;i++){
+       switch(data[i]['Langues [Espagnol]']){
+           case "je suis expert(e)":
+                info["je suis expert(e)"]++;
+                break;
+            case "je connais bien":
+                info["je connais bien"]++;
+                break;
+            case "je connais un peu":
+                info["je connais un peu"]++;
+                break;
+            case "je ne connais pas du tout":
+                info["je ne connais pas du tout"]++;
+                break;
+            default:
+            break;
+       }
+    }
+    //console.log(info);
+     var width = 450
+         height = 450
+         margin = 40
+     var radius = Math.min(width, height) / 2 - margin
+     var svg = d3.select("#espagnol")
+     .append("svg")
          .attr("width", width)
          .attr("height", height)
          .attr("viewBox", "0 0 450 450")
@@ -220,77 +226,382 @@
                     .duration('50')
                     .style("opacity", 0);
             });
-     
+ 
+}
+
+function Langue_italien(data){
+    let info = {
+        "je suis expert(e)":0,
+        "je connais bien":0,
+        "je connais un peu":0,
+        "je ne connais pas du tout":0
+    };
+    for(let i = 0; i< data.length;i++){
+       switch(data[i]['Langues [Italien]']){
+           case "je suis expert(e)":
+                info["je suis expert(e)"]++;
+                break;
+            case "je connais bien":
+                info["je connais bien"]++;
+                break;
+            case "je connais un peu":
+                info["je connais un peu"]++;
+                break;
+            case "je ne connais pas du tout":
+                info["je ne connais pas du tout"]++;
+                break;
+            default:
+            break;
+       }
     }
+    //console.log(info);
+     var width = 450
+         height = 450
+         margin = 40
+     var radius = Math.min(width, height) / 2 - margin
+     var svg = d3.select("#italien")
+     .append("svg")
+     .attr("width", width)
+     .attr("height", height)
+     .attr("viewBox", "0 0 450 450")
+     .append("g")
+     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+     var color = d3.scaleOrdinal()
+     .domain(info)
+     .range(d3.schemeCategory10);
+     var pie = d3.pie()
+     .value(function(d) {return d.value; })
+     var data_ready = pie(d3.entries(info))
+     var arcGenerator = d3.arc()
+     .innerRadius(150)
+     .outerRadius(radius);
+     svg
+     .selectAll('mySlices')
+     .data(data_ready)
+     .enter()
+     .append('path')
+     .attr('d', arcGenerator)
+     .attr('fill', function(d){ return(color(d.data.key)) })
+     .attr("stroke", "#C3D90A")
+     .style("stroke-width", "9px")
+     .on('mouseover', function (d, i) {
+        d3.select(this).transition()
+            .duration('50')
+            .attr('opacity', '.35');
+        div.transition()
+            .duration(50)
+            .style("opacity", 1);
+        div.html(d.data.key + "<br />" + d.value + "/62")
+            .style("left", (d3.event.pageX + 10) + "px")
+            .style("top", (d3.event.pageY - 15) + "px");
+        })
+        .on('mouseout', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '1');
+            div.transition()
+                .duration('50')
+                .style("opacity", 0);
+        });
+ 
+}
 
-   
+function Langue_portugais(data){
+    let info = {
+        "je suis expert(e)":0,
+        "je connais bien":0,
+        "je connais un peu":0,
+        "je ne connais pas du tout":0
+    };
+    for(let i = 0; i< data.length;i++){
+       switch(data[i]['Langues [Tamazirth]']){
+           case "je suis expert(e)":
+                info["je suis expert(e)"]++;
+                break;
+            case "je connais bien":
+                info["je connais bien"]++;
+                break;
+            case "je connais un peu":
+                info["je connais un peu"]++;
+                break;
+            case "je ne connais pas du tout":
+                info["je ne connais pas du tout"]++;
+                break;
+            default:
+            break;
+       }
+    }
+    //console.log(info);
+     var width = 450
+         height = 450
+         margin = 40
+     var radius = Math.min(width, height) / 2 - margin
+     var svg = d3.select("#tamazirth")
+     .append("svg")
+     .attr("width", width)
+     .attr("height", height)
+     .attr("viewBox", "0 0 450 450")
+     .append("g")
+     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+     var color = d3.scaleOrdinal()
+     .domain(info)
+     .range(d3.schemeCategory10);
+     var pie = d3.pie()
+     .value(function(d) {return d.value; })
+     var data_ready = pie(d3.entries(info))
+     var arcGenerator = d3.arc()
+     .innerRadius(150)
+     .outerRadius(radius);
+     svg
+     .selectAll('mySlices')
+     .data(data_ready)
+     .enter()
+     .append('path')
+     .attr('d', arcGenerator)
+     .attr('fill', function(d){ return(color(d.data.key)) })
+     .attr("stroke", "#C3D90A")
+     .style("stroke-width", "9px")
+     .on('mouseover', function (d, i) {
+        d3.select(this).transition()
+            .duration('50')
+            .attr('opacity', '.35');
+        div.transition()
+            .duration(50)
+            .style("opacity", 1);
+        div.html(d.data.key + "<br />" + d.value + "/62")
+            .style("left", (d3.event.pageX + 10) + "px")
+            .style("top", (d3.event.pageY - 15) + "px");
+        })
+        .on('mouseout', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '1');
+            div.transition()
+                .duration('50')
+                .style("opacity", 0);
+        });
+ 
+}
 
+function Langue_tamazirth(data){
+    let info = {
+        "je suis expert(e)":0,
+        "je connais bien":0,
+        "je connais un peu":0,
+        "je ne connais pas du tout":0
+    };
+    for(let i = 0; i< data.length;i++){
+       switch(data[i]['Langues [Portugais]']){
+           case "je suis expert(e)":
+                info["je suis expert(e)"]++;
+                break;
+            case "je connais bien":
+                info["je connais bien"]++;
+                break;
+            case "je connais un peu":
+                info["je connais un peu"]++;
+                break;
+            case "je ne connais pas du tout":
+                info["je ne connais pas du tout"]++;
+                break;
+            default:
+            break;
+       }
+    }
+    //console.log(info);
+     var width = 450
+         height = 450
+         margin = 40
+     var radius = Math.min(width, height) / 2 - margin
+     var svg = d3.select("#portugais")
+     .append("svg")
+         .attr("width", width)
+         .attr("height", height)
+         .attr("viewBox", "0 0 450 450")
+         .append("g")
+         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+         var color = d3.scaleOrdinal()
+         .domain(info)
+         .range(d3.schemeCategory10);
+         var pie = d3.pie()
+         .value(function(d) {return d.value; })
+         var data_ready = pie(d3.entries(info))
+         var arcGenerator = d3.arc()
+         .innerRadius(150)
+         .outerRadius(radius);
+         svg
+         .selectAll('mySlices')
+         .data(data_ready)
+         .enter()
+         .append('path')
+             .attr('d', arcGenerator)
+             .attr('fill', function(d){ return(color(d.data.key)) })
+             .attr("stroke", "#C3D90A")
+             .style("stroke-width", "9px")
+             .style("opacity", 0.7)
+             .on('mouseover', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '.85');
+                div.transition()
+                    .duration(50)
+                    .style("opacity", 1);
+                div.html(d.data.key + "<br />" + d.value + "/62")
+                    .style("left", (d3.event.pageX + 10) + "px")
+                    .style("top", (d3.event.pageY - 15) + "px");
+                })
+                .on('mouseout', function (d, i) {
+                    d3.select(this).transition()
+                        .duration('50')
+                        .attr('opacity', '1');
+                    div.transition()
+                        .duration('50')
+                        .style("opacity", 0);
+                });
+ 
+}
 
-    function Snapchat(data){
-        let info = {
-            "rarement":0,
-            "souvent":0,
-            "je suis accro":0,
-            "jamais":0
-        };
-        for(let i = 0; i <data.length;i++){
-            switch(data[i]['Quels réseaux sociaux [snapchat]']){
-                case "rarement":
-                    info["rarement"]++;
-                    break;
-                case "souvent":
-                   info["souvent"]++;
-                    break;
-                case "je suis accro":
-                  info["je suis accro"]++;
-                    break;
+function Langue_allemand(data){
+    let info = {
+        "je suis expert(e)":0,
+        "je connais bien":0,
+        "je connais un peu":0,
+        "je ne connais pas du tout":0
+    };
+    for(let i = 0; i< data.length;i++){
+       switch(data[i]['Langues [Allemenand]']){
+           case "je suis expert(e)":
+                info["je suis expert(e)"]++;
+                break;
+            case "je connais bien":
+                info["je connais bien"]++;
+                break;
+            case "je connais un peu":
+                info["je connais un peu"]++;
+                break;
+            case "je ne connais pas du tout":
+                info["je ne connais pas du tout"]++;
+                break;
+            default:
+            break;
+       }
+    }
+    //console.log(info);
+     var width = 450
+         height = 450
+         margin = 40
+     var radius = Math.min(width, height) / 2 - margin
+     var svg = d3.select("#allemand")
+     .append("svg")
+     .attr("width", width)
+     .attr("height", height)
+     .attr("viewBox", "0 0 450 450")
+     .append("g")
+     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+     var color = d3.scaleOrdinal()
+     .domain(info)
+     .range(d3.schemeCategory10);
+     var pie = d3.pie()
+     .value(function(d) {return d.value; })
+     var data_ready = pie(d3.entries(info))
+     var arcGenerator = d3.arc()
+     .innerRadius(150)
+     .outerRadius(radius);
+     svg
+     .selectAll('mySlices')
+     .data(data_ready)
+     .enter()
+     .append('path')
+     .attr('d', arcGenerator)
+     .attr('fill', function(d){ return(color(d.data.key)) })
+     .attr("stroke", "#C3D90A")
+     .style("stroke-width", "9px")
+     .on('mouseover', function (d, i) {
+        d3.select(this).transition()
+            .duration('50')
+            .attr('opacity', '.35');
+        div.transition()
+            .duration(50)
+            .style("opacity", 1);
+        div.html(d.data.key + "<br />" + d.value + "/62")
+            .style("left", (d3.event.pageX + 10) + "px")
+            .style("top", (d3.event.pageY - 15) + "px");
+        })
+        .on('mouseout', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '1');
+            div.transition()
+                .duration('50')
+                .style("opacity", 0);
+        });
+ 
+}
 
-                case "jamais":
-                    info['jamais']++;
-                    break;
-                default:
-                    break;
-
-            }
-        }
-        var width = 450
-        height = 450
-        margin = 40
-    var radius = Math.min(width, height) / 2 - margin
-    var svg = d3.select("#snapchat")
-    .append("svg")
-    .attr("width", width)
-    .attr("height", height)
-    .attr("viewBox", "0 0 450 450")
-    .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-    var color = d3.scaleOrdinal()
-    .domain(info)
-    .range(d3.schemeCategory10);
-    var pie = d3.pie()
-    .value(function(d) {return d.value; })
-    var data_ready = pie(d3.entries(info))
-    var arcGenerator = d3.arc()
-    .innerRadius(150)
-    .outerRadius(radius);
-    svg
-    .selectAll('mySlices')
-    .data(data_ready)
-    .enter()
-    .append('path')
-        .attr('d', arcGenerator)
-        .attr('fill', function(d){ return(color(d.data.key)) })
-        .attr("stroke", "#C3D90A")
-        .style("stroke-width", "9px")
-        .style("opacity", 0.7)
-        .on('mouseover', function (d, i) {
+function Langue_russe(data){
+    let info = {
+        "je suis expert(e)":0,
+        "je connais bien":0,
+        "je connais un peu":0,
+        "je ne connais pas du tout":0
+    };
+    for(let i = 0; i< data.length;i++){
+       switch(data[i]['Langues [Russe]']){
+           case "je suis expert(e)":
+                info["je suis expert(e)"]++;
+                break;
+            case "je connais bien":
+                info["je connais bien"]++;
+                break;
+            case "je connais un peu":
+                info["je connais un peu"]++;
+                break;
+            case "je ne connais pas du tout":
+                info["je ne connais pas du tout"]++;
+                break;
+            default:
+            break;
+       }
+    }
+    //console.log(info);
+     var width = 450
+         height = 450
+         margin = 40
+     var radius = Math.min(width, height) / 2 - margin
+     var svg = d3.select("#russe")
+     .append("svg")
+         .attr("width", width)
+         .attr("height", height)
+         .attr("viewBox", "0 0 450 450")
+         .append("g")
+         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+         var color = d3.scaleOrdinal()
+         .domain(info)
+         .range(d3.schemeCategory10);
+         var pie = d3.pie()
+         .value(function(d) {return d.value; })
+         var data_ready = pie(d3.entries(info))
+         var arcGenerator = d3.arc()
+         .innerRadius(150)
+         .outerRadius(radius);
+         svg
+         .selectAll('mySlices')
+         .data(data_ready)
+         .enter()
+         .append('path')
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .style("opacity", 0.7)
+         .on('mouseover', function (d, i) {
             d3.select(this).transition()
                 .duration('50')
                 .attr('opacity', '.85');
             div.transition()
                 .duration(50)
                 .style("opacity", 1);
-            div.html(d.data.key + "<br />" + d.value + "%")
+            div.html(d.data.key + "<br />" + d.value + "/62")
                 .style("left", (d3.event.pageX + 10) + "px")
                 .style("top", (d3.event.pageY - 15) + "px");
             })
@@ -302,41 +613,194 @@
                     .duration('50')
                     .style("opacity", 0);
             });
+ 
+}
 
-    }
-
-    function Youtube(data){
-        let info = {
-            "souvent":0,
-            "rarement":0,
-            "jamais":0,
-            "je suis accro":0
-        };
-        for(let i = 0; i< data.length;i++){
-           switch(data[i]['Quels réseaux sociaux [Youtube]']){
-               case "souvent":
-                    info["souvent"]++;
-                    break;
-                case "rarement":
-                    info["rarement"]++;
-                    break;
-                case "jamais":
-                    info["jamais"]++;
-                    break;
-                case "je suis accro":
-                    info["je suis accro"]++;
-                    break;
-                default:
+function Langue_perse(data){
+    let info = {
+        "je suis expert(e)":0,
+        "je connais bien":0,
+        "je connais un peu":0,
+        "je ne connais pas du tout":0
+    };
+    for(let i = 0; i< data.length;i++){
+       switch(data[i]['Langues [Persan]']){
+           case "je suis expert(e)":
+                info["je suis expert(e)"]++;
                 break;
-           }
-        }
-        //console.log(info);
-         var width = 450
-             height = 450
-             margin = 40
-         var radius = Math.min(width, height) / 2 - margin
-         var svg = d3.select("#youtube")
-         .append("svg")
+            case "je connais bien":
+                info["je connais bien"]++;
+                break;
+            case "je connais un peu":
+                info["je connais un peu"]++;
+                break;
+            case "je ne connais pas du tout":
+                info["je ne connais pas du tout"]++;
+                break;
+            default:
+            break;
+       }
+    }
+    //console.log(info);
+     var width = 450
+         height = 450
+         margin = 40
+     var radius = Math.min(width, height) / 2 - margin
+     var svg = d3.select("#perse")
+     .append("svg")
+     .attr("width", width)
+     .attr("height", height)
+     .attr("viewBox", "0 0 450 450")
+     .append("g")
+     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+     var color = d3.scaleOrdinal()
+     .domain(info)
+     .range(d3.schemeCategory10);
+     var pie = d3.pie()
+     .value(function(d) {return d.value; })
+     var data_ready = pie(d3.entries(info))
+     var arcGenerator = d3.arc()
+     .innerRadius(150)
+     .outerRadius(radius);
+     svg
+     .selectAll('mySlices')
+     .data(data_ready)
+     .enter()
+     .append('path')
+     .attr('d', arcGenerator)
+     .attr('fill', function(d){ return(color(d.data.key)) })
+     .attr("stroke", "#C3D90A")
+     .style("stroke-width", "9px")
+     .on('mouseover', function (d, i) {
+        d3.select(this).transition()
+            .duration('50')
+            .attr('opacity', '.35');
+        div.transition()
+            .duration(50)
+            .style("opacity", 1);
+        div.html(d.data.key + "<br />" + d.value + "/62")
+            .style("left", (d3.event.pageX + 10) + "px")
+            .style("top", (d3.event.pageY - 15) + "px");
+        })
+        .on('mouseout', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '1');
+            div.transition()
+                .duration('50')
+                .style("opacity", 0);
+        });
+ 
+}
+function Langue_chinois(data){
+    let info = {
+        "je suis expert(e)":0,
+        "je connais bien":0,
+        "je connais un peu":0,
+        "je ne connais pas du tout":0
+    };
+    for(let i = 0; i< data.length;i++){
+       switch(data[i]['Langues [Chinois]']){
+           case "je suis expert(e)":
+                info["je suis expert(e)"]++;
+                break;
+            case "je connais bien":
+                info["je connais bien"]++;
+                break;
+            case "je connais un peu":
+                info["je connais un peu"]++;
+                break;
+            case "je ne connais pas du tout":
+                info["je ne connais pas du tout"]++;
+                break;
+            default:
+            break;
+       }
+    }
+    //console.log(info);
+     var width = 450
+         height = 450
+         margin = 40
+     var radius = Math.min(width, height) / 2 - margin
+     var svg = d3.select("#chinois")
+     .append("svg")
+     .attr("width", width)
+     .attr("height", height)
+     .attr("viewBox", "0 0 450 450")
+     .append("g")
+     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+     var color = d3.scaleOrdinal()
+     .domain(info)
+     .range(d3.schemeCategory10);
+     var pie = d3.pie()
+     .value(function(d) {return d.value; })
+     var data_ready = pie(d3.entries(info))
+     var arcGenerator = d3.arc()
+     .innerRadius(150)
+     .outerRadius(radius);
+     svg
+     .selectAll('mySlices')
+     .data(data_ready)
+     .enter()
+     .append('path')
+     .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
+ 
+}
+
+function Langue_japonais(data){
+    let info = {
+        "je suis expert(e)":0,
+        "je connais bien":0,
+        "je connais un peu":0,
+        "je ne connais pas du tout":0
+    };
+    for(let i = 0; i< data.length;i++){
+       switch(data[i]['Langues [Japonais]']){
+           case "je suis expert(e)":
+                info["je suis expert(e)"]++;
+                break;
+            case "je connais bien":
+                info["je connais bien"]++;
+                break;
+            case "je connais un peu":
+                info["je connais un peu"]++;
+                break;
+            case "je ne connais pas du tout":
+                info["je ne connais pas du tout"]++;
+                break;
+            default:
+            break;
+       }
+    }
+    //console.log(info);
+     var width = 450
+         height = 450
+         margin = 40
+     var radius = Math.min(width, height) / 2 - margin
+     var svg = d3.select("#japonais")
+   .append("svg")
          .attr("width", width)
          .attr("height", height)
          .attr("viewBox", "0 0 450 450")
@@ -379,159 +843,5 @@
                     .duration('50')
                     .style("opacity", 0);
             });
-     
-    }
-
-    function Instagram(data){
-        let info = {
-            "souvent":0,
-            "rarement":0,
-            "jamais":0,
-            "je suis accro":0
-        };
-        for(let i = 0; i< data.length;i++){
-           switch(data[i]['Quels réseaux sociaux [instagram]']){
-               case "souvent":
-                    info["souvent"]++;
-                    break;
-                case "rarement":
-                    info["rarement"]++;
-                    break;
-                case "jamais":
-                    info["jamais"]++;
-                    break;
-                case "je suis accro":
-                    info["je suis accro"]++;
-                    break;
-                default:
-                break;
-           }
-        }
-        //console.log(info);
-         var width = 450
-             height = 450
-             margin = 40
-         var radius = Math.min(width, height) / 2 - margin
-         var svg = d3.select("#instagram")
-         .append("svg")
-         .attr("width", width)
-         .attr("height", height)
-         .attr("viewBox", "0 0 450 450")
-         .append("g")
-         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-         var color = d3.scaleOrdinal()
-         .domain(info)
-         .range(d3.schemeCategory10);
-         var pie = d3.pie()
-         .value(function(d) {return d.value; })
-         var data_ready = pie(d3.entries(info))
-         var arcGenerator = d3.arc()
-         .innerRadius(150)
-         .outerRadius(radius);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('path')
-         .attr('d', arcGenerator)
-         .attr('fill', function(d){ return(color(d.data.key)) })
-         .attr("stroke", "#C3D90A")
-         .style("stroke-width", "9px")
-         .on('mouseover', function (d, i) {
-            d3.select(this).transition()
-                .duration('50')
-                .attr('opacity', '.35');
-            div.transition()
-                .duration(50)
-                .style("opacity", 1);
-            div.html(d.data.key + "<br />" + d.value + "/62")
-                .style("left", (d3.event.pageX + 10) + "px")
-                .style("top", (d3.event.pageY - 15) + "px");
-            })
-            .on('mouseout', function (d, i) {
-                d3.select(this).transition()
-                    .duration('50')
-                    .attr('opacity', '1');
-                div.transition()
-                    .duration('50')
-                    .style("opacity", 0);
-            });
-     
-    }
-
-    function Discord(data){
-        let info = {
-            "souvent":0,
-            "rarement":0,
-            "jamais":0,
-            "je suis accro":0
-        };
-        for(let i = 0; i< data.length;i++){
-           switch(data[i]['Quels réseaux sociaux [discorde]']){
-               case "souvent":
-                    info["souvent"]++;
-                    break;
-                case "rarement":
-                    info["rarement"]++;
-                    break;
-                case "jamais":
-                    info["jamais"]++;
-                    break;
-                case "je suis accro":
-                    info["je suis accro"]++;
-                    break;
-                default:
-                break;
-           }
-        }
-        //console.log(info);
-         var width = 450
-             height = 450
-             margin = 40
-         var radius = Math.min(width, height) / 2 - margin
-         var svg = d3.select("#discord")
-         .append("svg")
-         .attr("width", width)
-         .attr("height", height)
-         .attr("viewBox", "0 0 450 450")
-         .append("g")
-         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-         var color = d3.scaleOrdinal()
-         .domain(info)
-         .range(d3.schemeCategory10);
-         var pie = d3.pie()
-         .value(function(d) {return d.value; })
-         var data_ready = pie(d3.entries(info))
-         var arcGenerator = d3.arc()
-         .innerRadius(150)
-         .outerRadius(radius);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('path')
-         .attr('d', arcGenerator)
-         .attr('fill', function(d){ return(color(d.data.key)) })
-         .attr("stroke", "#C3D90A")
-         .style("stroke-width", "9px")
-         .on('mouseover', function (d, i) {
-            d3.select(this).transition()
-                .duration('50')
-                .attr('opacity', '.35');
-            div.transition()
-                .duration(50)
-                .style("opacity", 1);
-            div.html(d.data.key + "<br />" + d.value + "/62")
-                .style("left", (d3.event.pageX + 10) + "px")
-                .style("top", (d3.event.pageY - 15) + "px");
-            })
-            .on('mouseout', function (d, i) {
-                d3.select(this).transition()
-                    .duration('50')
-                    .attr('opacity', '1');
-                div.transition()
-                    .duration('50')
-                    .style("opacity", 0);
-            });
-     
-    }
+ 
+}
