@@ -5,10 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Mention Humanités Numériques : trombinoscope de la promotion 2020 - 2021</title>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-		<script src="https://d3js.org/d3.v4.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -28,30 +28,12 @@
                         Parcours
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="m1cen">
-                                <label class="form-check-label" for="m1cen">M1 CEN</label>
-                            </div>
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="m1gsi">
-                                <label class="form-check-label" for="m1gsi">M1 GSI</label>
-                            </div>
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="m1net">
-                                <label class="form-check-label" for="m1net">M1 NET</label>
-                            </div>
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="m2thyp">
-                                <label class="form-check-label" for="m2thyp">M2 THYP</label>
-                            </div>
-                        </a>
+                        <a class="dropdown-item" onclick="parcoursFilter('Tous')"> Tous </a>
+                        <a class="dropdown-item" onclick="parcoursFilter('M1 CEN')"> M1 CEN </a>
+                        <a class="dropdown-item" onclick="parcoursFilter('M1 GSI')"> M1 GSI </a>
+                        <a class="dropdown-item" onclick="parcoursFilter('M1 AVUN')"> M1 AVUN </a>
+                        <a class="dropdown-item" onclick="parcoursFilter('M2 AVUN')"> M2 AVUN </a>
+                        <a class="dropdown-item" onclick="parcoursFilter('M2 THYP')"> M2 THYP </a>
                     </div>
                 </div>
                 <div class="dropdown" style="margin: 20px;">
@@ -59,22 +41,72 @@
                         Ordinateur
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="ordiOui">
-                                <label class="form-check-label" for="ordiOui">Oui</label>
-                            </div>
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="ordiNon">
-                                <label class="form-check-label" for="ordiNon">Non</label>
-                            </div>
-                        </a>
+                        <a class="dropdown-item" onclick="ordiFilter('Tous')"> Tous </a>
+                        <a class="dropdown-item" onclick="ordiFilter('Oui')"> Oui </a>
+                        <a class="dropdown-item" onclick="ordiFilter('Non')"> Non </a>
+                    </div>
+                </div>
+                <div class="dropdown" style="margin: 20px;">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+                        Langues
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" onclick="langueFilter('Tous')"> Tous </a>
+                        <a class="dropdown-item" onclick="langueFilter('Français')"> Français </a>
+                        <a class="dropdown-item" onclick="langueFilter('Anglais')"> Anglais </a>
+                        <a class="dropdown-item" onclick="langueFilter('Arabe')"> Arabe </a>
+                        <a class="dropdown-item" onclick="langueFilter('Espagnol')"> Espagnol </a>
+                        <a class="dropdown-item" onclick="langueFilter('Tamazirth')"> Tamazirth </a>
+                        <a class="dropdown-item" onclick="langueFilter('Italien')"> Italien </a>
+                        <a class="dropdown-item" onclick="langueFilter('Portugais')"> Portugais </a>
+                        <a class="dropdown-item" onclick="langueFilter('Allemand')"> Allemand </a>
+                        <a class="dropdown-item" onclick="langueFilter('Persan')"> Persan </a>
+                        <a class="dropdown-item" onclick="langueFilter('Russe')"> Russe </a>
+                        <a class="dropdown-item" onclick="langueFilter('Chinois')"> Chinois </a>
+                        <a class="dropdown-item" onclick="langueFilter('Japonais')"> Japonais </a>
+                    </div>
+                </div>
+                <div class="dropdown" style="margin: 20px;">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+                        Réseaux sociaux
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" onclick="reseauxFilter('Tous')"> Tous </a>
+                        <a class="dropdown-item" onclick="reseauxFilter('Facebook')"> Facebook </a>
+                        <a class="dropdown-item" onclick="reseauxFilter('Twitter')"> Twitter </a>
+                        <a class="dropdown-item" onclick="reseauxFilter('LinkedIn')"> LinkedIn </a>
+                        <a class="dropdown-item" onclick="reseauxFilter('instagram')"> Instagram </a>
+                        <a class="dropdown-item" onclick="reseauxFilter('what\'s app')"> What's App </a>
+                        <a class="dropdown-item" onclick="reseauxFilter('pinterest')"> Pinterest </a>
+                        <a class="dropdown-item" onclick="reseauxFilter('snapchat')"> Snapchat </a>
+                        <a class="dropdown-item" onclick="reseauxFilter('discorde')"> Discord </a>
+                        <a class="dropdown-item" onclick="reseauxFilter('telegram')"> Telegram </a>
+                        <a class="dropdown-item" onclick="reseauxFilter('Recherche Gate')"> Recherche Gate </a>
+                        <a class="dropdown-item" onclick="reseauxFilter('Youtube')"> Youtube </a>
+                        <a class="dropdown-item" onclick="reseauxFilter('Viadeo')"> Viadeo </a>
+                        <a class="dropdown-item" onclick="reseauxFilter('Vimeo')"> Vimeo </a>
+                        <a class="dropdown-item" onclick="reseauxFilter('Skype')"> Skype </a>
+                        <a class="dropdown-item" onclick="reseauxFilter('Sky blog')"> Sky Blog </a>
+                        <a class="dropdown-item" onclick="reseauxFilter('MSN')"> MSN </a>
+                        <a class="dropdown-item" onclick="reseauxFilter('Blogs')"> Blogs </a>
+                    </div>
+                </div>
+                <div class="dropdown" style="margin: 20px;">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+                        Connexion internet
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" onclick="connexionFilter('Tous')"> Tous </a>
+                        <a class="dropdown-item" onclick="connexionFilter('4G')"> 4G </a>
+                        <a class="dropdown-item" onclick="connexionFilter('Ethernet')"> Ethernet </a>
+                        <a class="dropdown-item" onclick="connexionFilter('Satellite')"> Satellite </a>
+                        <a class="dropdown-item" onclick="connexionFilter('WIFI')"> WIFI </a>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div id="student-cards"></div>
 
         <script type="text/javascript" src="./js/dataCard.js"></script>
     </body>
