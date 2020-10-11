@@ -2,36 +2,127 @@
 <html>
 <head>
 	<title>Mention Humanités Numériques</title>
-	<link rel="stylesheet" type="text/css" href="css\bootstrap.min.css">>
+	<link rel="stylesheet" type="text/css" href="css\bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css\home.css">
 
-	<script src="js\jquery.min.js"></script>>
-	<script src="js\bootstrap.min.js"></script>>
+	<script src="js\jquery.min.js"></script>
+	<script src="js\bootstrap.min.js"></script>
 </head>
-<body>
+
+<body onload="load_up()">
 	<div class="container">
-		<div class="table-responsive">
+		<div class="div_1">
 			<h1 align="center">Mention Humanités Numériques</h1>
 			<br />
 			
-			<div align="center">
-				<button type="button name="load_data id="load_data" class="btn btn-info">Load CSV</button>
-			</div>>
 			<br />
+			<div class="custom-select" style="width:200px;">
+			  <select>
+			    <option value="ALL" onclick="load_up()">Tous</option>
+			    <option value="M2NET" onclick="load_net()">M1 NET</option>
+			    <option value="M2THYP" onclick="load_thyp()">M2 THYP</option>
+			    <option value="M1 GSI" onclick="load_gsi()">M1 GSI</option>
+			    <option value="M1 CEN" onclick="load_cen()">M1</option>
+			  </select>
+			</div>
 
 			<div id="students_table">
 				
-			</div>>
+			</div>
 
 		</div>
-	</div>
+
+		
+		<script type="text/javascript">
+			function load_up(){
+			$.ajax({
+				url:"data.csv",
+				dataType: "text",
+				success:function(data)
+				{
+					var students_data = data.split(/\r?\n|\r/);
+					var table_data = '<div>';
+					for(var count=1; count < students_data.length; count++)
+					{
+						var cell_data =students_data[count].split(",");
+						table_data += '<div class="card" style="width: 18rem;">';
+
+							
+						for(var cell_count = 1; cell_count < 7; cell_count++)
+						{
 
 
-</body>
-</html>
+							if (cell_count == 6)
+							{
+                				let imgId = cell_data[6].split('id=')[1]; 
+								let imgStudent = 'https://drive.google.com/uc?id=' + imgId + '&export=download';
+								table_data += '<div class="img_holder"><img class="card-img-top" src="'+ imgStudent+'" /></div>';
+							}
+							else if(count === 1)
+							{
+								table_data += '<div> <h5 class="card-title">'+cell_data[cell_count]+'</h5></div>';
+							}
+							else
+							{
+								table_data += '<div> <p>'+cell_data[cell_count]+'</p></div>';
+							}
+						}
+						table_data += '</div>';
+					}
+					table_data += '</div>';
+					$('#students_table').html(table_data);
+				}
+			});
+			}
+		</script>
 
-<script>
-$(document).ready(function(){
-	$('#load_data').click(function(){
+	<script type="text/javascript">
+		function load_cen(){
+		$.ajax({
+			url:"data.csv",
+			dataType: "text",
+			success:function(data)
+			{
+				var students_data = data.split(/\r?\n|\r/);
+				var table_data = '<div>';
+				for(var count=1; count < students_data.length; count++)
+				{
+					var cell_data =students_data[count].split(",");
+					table_data += '<div class="card" style="width: 18rem;">';
+
+						
+					for(var cell_count = 1; cell_count < 7; cell_count++)
+					{
+
+						if (cell_data[5] == "M1 CEN")
+						{
+							if (cell_count == 6)
+							{
+								let imgId = cell_data[6].split('id=')[1]; 
+								let imgStudent = 'https://drive.google.com/uc?id=' + imgId + '&export=download';
+								table_data += '<div class="img_holder"><img class="card-img-top" src="'+ imgStudent+'" /></div>';
+							}
+							else if(count === 1)
+							{
+								table_data += '<div> <h5 class="card-title">'+cell_data[cell_count]+'</h5></div>';
+							}
+							else
+							{
+								table_data += '<div> <p>'+cell_data[cell_count]+'</p></div>';
+						}
+						}
+					}
+					table_data += '</div>';
+				}
+				table_data += '</div>';
+				$('#students_table').html(table_data);
+			}
+		});
+		}
+	</script>
+
+<script type="text/javascript">
+	function load_gsi(){
 	$.ajax({
 		url:"data.csv",
 		dataType: "text",
@@ -39,19 +130,28 @@ $(document).ready(function(){
 		{
 			var students_data = data.split(/\r?\n|\r/);
 			var table_data = '<table class="table table-bordered table_striped">';
-			for(var count=0; count < students_data.length; count++)
+			for(var count=1; count < students_data.length; count++)
 			{
 				var cell_data =students_data[count].split(",");
 				table_data += '<tr>';
-				for(var cell_count =0; cell_count < cell_data.length; cell_count++)
+				for(var cell_count = 1; cell_count < 7; cell_count++)
 				{
-					if(count === 0)
+					if (cell_data[5] == "M1 GSI")
 					{
-						table_data += '<th>'+cell_data[cell_count]+'</th>';
-					}
-					else
-					{
-						table_data += '<td>'+cell_data[cell_count]+'</td>';
+						if (cell_count == 6)
+						{
+							let imgId = cell_data[cell_count].split('id=')[1]; 
+							let imgStudent = 'https://drive.google.com/uc?id=' + imgId + '&export=download';
+							table_data += '<th>'+'<img id="img_img" style=width:50% src="'+ imgStudent+'" />'+'</th>';
+						}
+						else if(count === 0)
+						{
+							table_data += '<th>'+cell_data[cell_count]+'</th>';
+						}
+						else
+						{
+							table_data += '<td>'+cell_data[cell_count]+'</td>';
+						}
 					}
 				}
 				table_data += '</tr>';
@@ -60,6 +160,96 @@ $(document).ready(function(){
 			$('#students_table').html(table_data);
 		}
 	});
+	}
+</script>
+
+<script type="text/javascript">
+	function load_thyp(){
+	$.ajax({
+		url:"data.csv",
+		dataType: "text",
+		success:function(data)
+		{
+			var students_data = data.split(/\r?\n|\r/);
+			var table_data = '<table class="table table-bordered table_striped">';
+			for(var count=1; count < students_data.length; count++)
+			{
+				var cell_data =students_data[count].split(",");
+				table_data += '<tr>';
+				for(var cell_count = 1; cell_count < 7; cell_count++)
+				{
+					if (cell_data[5] == "M2 THYP")
+					{
+						if (cell_count == 6)
+						{
+							let imgId = cell_data[cell_count].split('id=')[1]; 
+							let imgStudent = 'https://drive.google.com/uc?id=' + imgId + '&export=download';
+							table_data += '<th>'+'<img id="img_img" style=width:50% src="'+ imgStudent+'" />'+'</th>';
+						}
+						else if(count === 0)
+						{
+							table_data += '<th>'+cell_data[cell_count]+'</th>';
+						}
+						else
+						{
+							table_data += '<td>'+cell_data[cell_count]+'</td>';
+						}
+					}
+				}
+				table_data += '</tr>';
+			}
+			table_data += '</table>';
+			$('#students_table').html(table_data);
+		}
 	});
-});
-</script>>
+	}
+</script>
+		
+<script type="text/javascript">
+	function load_net(){
+	$.ajax({
+		url:"data.csv",
+		dataType: "text",
+		success:function(data)
+		{
+			var students_data = data.split(/\r?\n|\r/);
+			var table_data = '<table class="table table-bordered table_striped">';
+			for(var count=1; count < students_data.length; count++)
+			{
+				var cell_data =students_data[count].split(",");
+				table_data += '<tr>';
+				for(var cell_count = 1; cell_count < 7; cell_count++)
+				{
+					if (cell_data[5] == "M1 NET")
+					{
+						if (cell_count == 6)
+						{
+							let imgId = cell_data[cell_count].split('id=')[1]; 
+							let imgStudent = 'https://drive.google.com/uc?id=' + imgId + '&export=download';
+							table_data += '<th>'+'<img id="img_img" style=width:50% src="'+ imgStudent+'" />'+'</th>';
+						}
+						else if(count === 0)
+						{
+							table_data += '<th>'+cell_data[cell_count]+'</th>';
+						}
+						else
+						{
+							table_data += '<td>'+cell_data[cell_count]+'</td>';
+						}
+					}
+				}
+				table_data += '</tr>';
+			}
+			table_data += '</table>';
+			$('#students_table').html(table_data);
+		}
+	});
+	}
+</script>
+		
+
+
+</body>
+</html>
+
+<script type="text/javascript" src="js/filtre.js"></script>>
