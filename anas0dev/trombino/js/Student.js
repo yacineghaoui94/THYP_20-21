@@ -27,11 +27,18 @@ class Student{
     id;
     details;
     facet;
+    graph;
 
     constructor(etud, id, facet){
         this.id = id;
         this.details = {};
         this.facet = facet;
+        this.graph = {
+            "besoins" : [],
+            "competences" : [],
+            "outils" : []
+        };
+
 
         for(let i in etud){
             let quest = this.vals[i.substring(0, i.indexOf("[") - 1)];
@@ -52,6 +59,16 @@ class Student{
                 
                 this.details[quest].set(prop, {v, n});                
                 this.addFacet(quest, prop, v, n, id);
+                
+                if(quest == "Besoins"){
+                    this.graph.besoins.push({'prop':prop,'importance':n,'expression':v});
+                }
+                if(quest == "Compétences"){
+                    this.graph.competences.push({'prop':prop,'importance':n,'expression':v});
+                }
+                if(quest == "Outils"){
+                    this.graph.outils.push({'prop':prop,'importance':n,'expression':v});
+                }
 
             }else if(this.vals[i] != undefined){
                 if(this.vals[i] == "Compte"){

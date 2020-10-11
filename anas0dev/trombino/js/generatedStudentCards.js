@@ -247,24 +247,18 @@ function createCheckbox(name, exp, id, subTitles) {
 function createDropdown(name, facet) {
     if(facet[name]){
         let newDropdown = createBalise("li", "nav-item dropdown");
-        // console.log(facet[name]);
         let title = createBalise("a", "nav-link dropdown-toggle");
         title.href = "#";
         title.id = "navbarDropdown";
-        // title.role = "button";
         title.setAttribute("role", "button");
         title.setAttribute("data-toggle", "dropdown")
         title.setAttribute("aria-haspopup", "true")
         title.setAttribute("aria-expanded", "false")
-        // title["data-toggle"] = "dropdown";
-        // title["aria-haspopup"] = "true";
-        // title["aria-expanded"] = "false";
         title.appendChild(document.createTextNode(name));
         newDropdown.appendChild(title);
 
         let subTitles = createBalise("div", "dropdown-menu");
         subTitles.setAttribute("aria-labelledby", "navbarDropdown");
-        // subTitles["aria-labelledby"] = "navbarDropdown";
 
         for(const exp in facet[name].facetList){
             let id = exp.replace(/ /g, "_").toLowerCase();
@@ -304,7 +298,6 @@ function createMoreInfo(stud) {
     let objectifs = createBalise("p", "card-text");
     objectifs.appendChild(document.createTextNode("Objectifs : " + stud.details["Objectifs"]));
 
-
     let close = createBalise("button", "btn btn-danger", "", "position : absolute; right : 10px; top : 10px;");
     close.addEventListener("click", e => {
         moreInfo.innerHTML = "";
@@ -317,6 +310,7 @@ function createMoreInfo(stud) {
     newElt5.appendChild(e_mail);
     newElt5.appendChild(parcours);
     newElt5.appendChild(objectifs);
+
 
     newElt4.appendChild(newElt5);
     newElt3.appendChild(newImg);
