@@ -8,7 +8,7 @@
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://d3js.org/d3-scale.v3.min.js"></script>
     <script src="https://d3js.org/d3-axis.v2.min.js" ></script>
-    <title>D3_JS</title>
+    <title>Langages et développement</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <style>
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
@@ -135,7 +135,8 @@ nav ul li.btn.hide i:before{
 <li class="items" id="M1AVUN" onclick="fonction(id)"><a href="#">M1 AVUN</a></li>
 <li class="items" id="M2AVUN" onclick="fonction(id)"><a href="#">M2 AVUN</a></li>
 <li class="items" id="M2THYP" onclick="fonction(id)"><a href="#">M2 THYP</a></li>
-<li class="logo" onclick="statistiquesFonction()"> Cliquez ici pour voir les statistiques</li>
+<li class="items" id="TOUS" onclick="fonction(id)"><a href="#">TOUS</a></li>
+<li class="logo" id="statacceuil" onclick="statistiquesFonction()">Voir les statistiques</li>
 <li class="btn"><a href="#"><i class="fas fa-bars"></i></a></li>
 </ul>
 <br/><br/>
@@ -12273,29 +12274,70 @@ function affichage(){
              .attr("target","_blank")
              .style("background-color","#151515")
              .style("color","#defaaa")
-             .text(`${val["Votre mail"]}`)
-             .attr("href",`https://mail.google.com/${val["Votre mail"]}`)
+             .text(`${val["Votre compte GitHub"]}`)
+             .attr("href",`https://github.com/${val["Votre compte GitHub"]}`)
              
       })
 }
+let parcourA=[["M1 CEN",0],["M1 GSI",0],["M1 NET",0],["M1 AVUN",0],["M2 AVUN",0],["M2 THYP",0]]
+let parcour=parcourA
 
 let ordinateurA=[["Ordinateur personnelle, Oui", a.length, 0]]
 let ordinateur=ordinateurA
+
 let bool=false
-let connexion=[]
-let connexionA=[]
+let boolParcour=false
+let boolConnexion=false
+
+let boolFrançais=false
+let boolFrançaisM1CEN=false 
+let boolFrançaisM1GSI=false
+let boolFrançaisM1NET=false 
+let boolFrançaisM1AVUN=false 
+let boolFrançaisM2AVUN=false
+let boolFrançaisM2THYP=false
+
+let boolAnglais=false
+let boolAnglaisM1CEN=false 
+let boolAnglaisM1GSI=false
+let boolAnglaisM1NET=false 
+let boolAnglaisM1AVUN=false 
+let boolAnglaisM2AVUN=false
+let boolAnglaisM2THYP=false
+
 let boolM1CEN=false 
 let boolM1GSI=false
 let boolM1NET=false 
 let boolM1AVUN=false 
 let boolM2AVUN=false
 let boolM2THYP=false
+let connexion=[]
+let connexionA=[]
 let connexionM1CEN=[] 
 let connexionM1GSI=[] 
 let connexionM1NET=[] 
 let connexionM1AVUN=[] 
 let connexionM2AVUN=[]
 let connexionM2THYP=[]
+
+let languesFrancaise=[]
+let languesFrancaiseA=[] 
+let languesFrancaiseM1CEN=[] 
+let languesFrancaiseM1GSI=[] 
+let languesFrancaiseM1NET=[] 
+let languesFrancaiseM1AVUN=[] 
+let languesFrancaiseM2AVUN=[] 
+let languesFrancaiseM2THYP=[] 
+
+let languesAnglaise=[]
+let languesAnglaiseA=[] 
+let languesAnglaiseM1CEN=[] 
+let languesAnglaiseM1GSI=[] 
+let languesAnglaiseM1NET=[] 
+let languesAnglaiseM1AVUN=[] 
+let languesAnglaiseM2AVUN=[] 
+let languesAnglaiseM2THYP=[] 
+  
 data.map((val,key)=>{
   connexionA.forEach(element => {
     if(element[0]==val["Votre connexion internet personnelle est : [WIFI]"]){
@@ -12306,10 +12348,38 @@ data.map((val,key)=>{
   if(bool==false){
     connexionA.push([val["Votre connexion internet personnelle est : [WIFI]"],1,key])
   }
+  bool=false
+})
+
+data.map((val,key)=>{
+  languesFrancaiseA.forEach(element => {
+    if(element[0]==val["Langues [Français]"]){
+      element[1]=element[1]+1
+      boolFrançais=true
+    }
+  });
+  if(boolFrançais==false){
+    languesFrancaiseA.push([val["Langues [Français]"],1])
+  }
+  boolFrançais=false
 })
 data.map((val,key)=>{
+  languesAnglaiseA.forEach(element => {
+    if(element[0]==val["Langues [Anglais]"]){
+      element[1]=element[1]+1
+      boolAnglais=true
+    }
+  });
+  if(boolAnglais==false){
+    languesAnglaiseA.push([val["Langues [Anglais]"],1])
+  }
+  boolAnglais=false
+})
+console.log(languesAnglaiseA)
+data.map((val,key)=>{
   if(val["Dans quel parcours êtes vous inscris ?"]=="M1 CEN"){
-    console.log("m1cen")
+    parcourA.find(e=>e[0]=="M1 CEN")[1]=parcourA.find(e=>e[0]=="M1 CEN")[1]+1
+
     connexionM1CEN.forEach(element => {
       if(element[0]==val["Votre connexion internet personnelle est : [WIFI]"]){
         element[1]=element[1]+1
@@ -12319,12 +12389,34 @@ data.map((val,key)=>{
     if(boolM1CEN==false){
       connexionM1CEN.push([val["Votre connexion internet personnelle est : [WIFI]"],1,key])
     }
-  }
+    boolM1CEN=false
+    languesFrancaiseM1CEN.forEach(element => {
+      if(element[0]==val["Langues [Français]"]){
+        element[1]=element[1]+1
+        boolFrançaisM1CEN=true
+      }
+    });
+    if(boolFrançaisM1CEN==false){
+      languesFrancaiseM1CEN.push([val["Langues [Français]"],1,key])
+    }
+    boolFrançaisM1CEN=false
 
+    languesAnglaiseM1CEN.forEach(element => {
+      if(element[0]==val["Langues [Anglais]"]){
+        element[1]=element[1]+1
+        boolAnglaisM1CEN=true
+      }
+    });
+    if(boolAnglaisM1CEN==false){
+      languesAnglaiseM1CEN.push([val["Langues [Anglais]"],1,key])
+    }
+    boolAnglaisM1CEN=false
+  }
 })
 data.map((val,key)=>{
   if(val["Dans quel parcours êtes vous inscris ?"]=="M1 GSI"){
-    console.log("m1gsi")
+    parcourA.find(e=>e[0]=="M1 GSI")[1]=parcourA.find(e=>e[0]=="M1 GSI")[1]+1
+
     connexionM1GSI.forEach(element => {
       if(element[0]==val["Votre connexion internet personnelle est : [WIFI]"]){
         element[1]=element[1]+1
@@ -12334,11 +12426,34 @@ data.map((val,key)=>{
     if(boolM1GSI==false){
       connexionM1GSI.push([val["Votre connexion internet personnelle est : [WIFI]"],1,key])
     }
+    boolM1GSI=false
+    languesFrancaiseM1GSI.forEach(element => {
+      if(element[0]==val["Langues [Français]"]){
+        element[1]=element[1]+1
+        boolFrançaisM1GSI=true
+      }
+    });
+    if(boolFrançaisM1GSI==false){
+      languesFrancaiseM1GSI.push([val["Langues [Français]"],1,key])
+    }
+    boolFrançaisM1GSI=false
+
+    languesAnglaiseM1GSI.forEach(element => {
+      if(element[0]==val["Langues [Anglais]"]){
+        element[1]=element[1]+1
+        boolAnglaisM1GSI=true
+      }
+    });
+    if(boolAnglaisM1GSI==false){
+      languesAnglaiseM1GSI.push([val["Langues [Anglais]"],1,key])
+    }
+    boolAnglaisM1GSI=false
   }
 })
 data.map((val,key)=>{
   if(val["Dans quel parcours êtes vous inscris ?"]=="M1 NET"){
-    console.log("m1net")
+    parcourA.find(e=>e[0]=="M1 NET")[1]=parcourA.find(e=>e[0]=="M1 NET")[1]+1
+ 
     connexionM1NET.forEach(element => {
       if(element[0]==val["Votre connexion internet personnelle est : [WIFI]"]){
         element[1]=element[1]+1
@@ -12348,11 +12463,33 @@ data.map((val,key)=>{
     if(boolM1NET==false){
       connexionM1NET.push([val["Votre connexion internet personnelle est : [WIFI]"],1,key])
     }
+    boolFrançaisM1NET=false
+    languesFrancaiseM1NET.forEach(element => {
+      if(element[0]==val["Langues [Français]"]){
+        element[1]=element[1]+1
+        boolFrançaisM1NET=true
+      }
+    });
+    if(boolFrançaisM1NET==false){
+      languesFrancaiseM1NET.push([val["Langues [Français]"],1,key])
+    }
+    boolFrançaisM1NET=false
+
+    languesAnglaiseM1NET.forEach(element => {
+      if(element[0]==val["Langues [Anglais]"]){
+        element[1]=element[1]+1
+        boolAnglaisM1NET=true
+      }
+    });
+    if(boolAnglaisM1NET==false){
+      languesAnglaiseM1NET.push([val["Langues [Anglais]"],1,key])
+    }
+    boolAnglaisM1NET=false
   }
 })
 data.map((val,key)=>{
   if(val["Dans quel parcours êtes vous inscris ?"]=="M1 AVUN"){
-    console.log("m1avun")
+    parcourA.find(e=>e[0]=="M1 AVUN")[1]=parcourA.find(e=>e[0]=="M1 AVUN")[1]+1
     connexionM1AVUN.forEach(element => {
       if(element[0]==val["Votre connexion internet personnelle est : [WIFI]"]){
         element[1]=element[1]+1
@@ -12362,11 +12499,34 @@ data.map((val,key)=>{
     if(boolM1AVUN==false){
       connexionM1AVUN.push([val["Votre connexion internet personnelle est : [WIFI]"],1,key])
     }
+    boolM1AVUN=false
+    languesFrancaiseM1AVUN.forEach(element => {
+      if(element[0]==val["Langues [Français]"]){
+        element[1]=element[1]+1
+        boolFrançaisM1AVUN=true
+      }
+    });
+    if(boolFrançaisM1AVUN==false){
+      languesFrancaiseM1AVUN.push([val["Langues [Français]"],1,key])
+    }
+    boolFrançaisM1AVUN=false
+
+    languesAnglaiseM1AVUN.forEach(element => {
+      if(element[0]==val["Langues [Anglais]"]){
+        element[1]=element[1]+1
+        boolAnglaisM1AVUN=true
+      }
+    });
+    if(boolAnglaisM1AVUN==false){
+      languesAnglaiseM1AVUN.push([val["Langues [Anglais]"],1,key])
+    }
+    boolAnglaisM1AVUN=false
   }
 })
 data.map((val,key)=>{
   if(val["Dans quel parcours êtes vous inscris ?"]=="M2 AVUN"){
-    console.log("m2avun")
+    parcourA.find(e=>e[0]=="M2 AVUN")[1]=parcourA.find(e=>e[0]=="M2 AVUN")[1]+1
+
     connexionM2AVUN.forEach(element => {
       if(element[0]==val["Votre connexion internet personnelle est : [WIFI]"]){
         element[1]=element[1]+1
@@ -12376,11 +12536,35 @@ data.map((val,key)=>{
     if(boolM2AVUN==false){
       connexionM2AVUN.push([val["Votre connexion internet personnelle est : [WIFI]"],1,key])
     }
+    boolM2AVUN=false
+    languesFrancaiseM2AVUN.forEach(element => {
+      if(element[0]==val["Langues [Français]"]){
+        element[1]=element[1]+1
+        boolFrançaisM2AVUN=true
+      }
+    });
+    if(boolFrançaisM2AVUN==false){
+      languesFrancaiseM2AVUN.push([val["Langues [Français]"],1,key])
+    }
+    boolFrançaisM2AVUN=false
+
+    languesAnglaiseM2AVUN.forEach(element => {
+      if(element[0]==val["Langues [Anglais]"]){
+        element[1]=element[1]+1
+        boolAnglaisM2AVUN=true
+      }
+    });
+    if(boolAnglaisM2AVUN==false){
+      languesAnglaiseM2AVUN.push([val["Langues [Anglais]"],1,key])
+    }
+    boolAnglaisM2AVUN=false
   }
 })
+
 data.map((val,key)=>{
   if(val["Dans quel parcours êtes vous inscris ?"]=="M2 THYP"){
-    console.log("thyp")
+    parcourA.find(e=>e[0]=="M2 THYP")[1]=parcourA.find(e=>e[0]=="M2 THYP")[1]+1
+
     connexionM2THYP.forEach(element => {
       if(element[0]==val["Votre connexion internet personnelle est : [WIFI]"]){
         element[1]=element[1]+1
@@ -12390,6 +12574,28 @@ data.map((val,key)=>{
     if(boolM2THYP==false){
       connexionM2THYP.push([val["Votre connexion internet personnelle est : [WIFI]"],1,key])
     }
+    boolM2THYP=false
+    languesFrancaiseM2THYP.forEach(element => {
+      if(element[0]==val["Langues [Français]"]){
+        element[1]=element[1]+1
+        boolFrançaisM2THYP=true
+      }
+    });
+    if(boolFrançaisM2THYP==false){
+      languesFrancaiseM2THYP.push([val["Langues [Français]"],1,key])
+    }
+    boolFrançaisM2THYP=false
+
+    languesAnglaiseM2THYP.forEach(element => {
+      if(element[0]==val["Langues [Anglais]"]){
+        element[1]=element[1]+1
+        boolAnglaisM2THYP=true
+      }
+    });
+    if(boolAnglaisM2THYP==false){
+      languesAnglaiseM2THYP.push([val["Langues [Anglais]"],1,key])
+    }
+    boolAnglaisM2THYP=false
   }
 })
 
@@ -12399,30 +12605,30 @@ function fonction(e){
   if(stat==0){
     var myobj = document.getElementById("rowCards");
     myobj.innerHTML=""
-    console.log("izan")
+
       if(e==="M1CEN"){
           a=data.filter(element=>element["Dans quel parcours êtes vous inscris ?"]==="M1 CEN")
-          console.log(a.length)
+
           affichage()
       }else if (e==="M1GSI"){
           a=data.filter(element=>element["Dans quel parcours êtes vous inscris ?"]==="M1 GSI")
-          console.log(a.length)
+
           affichage()
       }else if (e==="M1NET"){
           a=data.filter(element=>element["Dans quel parcours êtes vous inscris ?"]==="M1 NET")
-          console.log(a.length)
+
           affichage()
       } else if (e==="M1AVUN"){
           a=data.filter(element=>element["Dans quel parcours êtes vous inscris ?"]==="M1 AVUN")
-          console.log(a.length)
+
           affichage()
       } else if (e==="M2AVUN"){
           a=data.filter(element=>element["Dans quel parcours êtes vous inscris ?"]==="M2 AVUN")
-          console.log(a.length)
+
           affichage()
       } else if (e==="M2THYP") {
           a=data.filter(element=>element["Dans quel parcours êtes vous inscris ?"]==="M2 THYP")
-          console.log(a.length)
+
           affichage()
       }
       else{
@@ -12433,38 +12639,217 @@ function fonction(e){
 
     if(e==="M1CEN"){
         connexion=connexionM1CEN
+        parcour=[["M1 CEN",parcourA[0][1]],["M1 GSI",0],["M1 NET",0],["M1 AVUN",0],["M2 AVUN",0],["M2 THYP",0]]
+        languesFrancaise=languesFrancaiseM1CEN
   }else if (e==="M1GSI"){
         connexion=connexionM1GSI
+        parcour=[["M1 CEN",0],["M1 GSI",parcourA[1][1]],["M1 NET",0],["M1 AVUN",0],["M2 AVUN",0],["M2 THYP",0]]
   }else if (e==="M1NET"){
         connexion=connexionM1NET
+        parcour=[["M1 CEN",0],["M1 GSI",0],["M1 NET",parcourA[2][1]],["M1 AVUN",0],["M2 AVUN",0],["M2 THYP",0]]
+        languesFrancaise=languesFrancaiseM1NET
   } else if (e==="M1AVUN"){
         connexion=connexionM1AVUN
+        parcour=[["M1 CEN",0],["M1 GSI",0],["M1 NET",0],["M1 AVUN",parcourA[3][1]],["M2 AVUN",0],["M2 THYP",0]]
+        languesFrancaise=languesFrancaiseM1AVUN
   } else if (e==="M2AVUN"){
         connexion=connexionM2AVUN
+        parcour=[["M1 CEN",0],["M1 GSI",0],["M1 NET",0],["M1 AVUN",0],["M2 AVUN",parcourA[4][1]],["M2 THYP",0]]
+        languesFrancaise=languesFrancaiseM2AVUN
   } else if (e==="M2THYP") {
        connexion=connexionM2THYP
+       parcour=[["M1 CEN",0],["M1 GSI",0],["M1 NET",0],["M1 AVUN",0],["M2 AVUN",0],["M2 THYP",parcourA[5][1]]]
+       languesFrancaise=languesFrancaiseM2THYP
   }
   else{
       connexion=connexionA
+      parcour=parcourA
+      languesFrancaise=languesFrancaiseA
+      languesAnglaise=languesAnglaiseA
   } 
 
+      let widthCanvas=400
+      let heightCanvas=400
+
+
+      const color=d3.scaleLinear()
+              .domain([0,heightCanvas])
+              .range(['yellow','red'])
+//---------------------------------------------------------------------------
       var myobj = document.getElementById("rowCards");
       myobj.innerHTML=""
+//---------------------------------------------------------------------------
+const xScale3=d3.scaleBand()
+              .domain(parcour.map(val=>val[0]))
+              .rangeRound([0,widthCanvas])
+              .padding(0.1)
+        
+              const yScale3=d3.scaleLinear()
+              .range([0,heightCanvas-15])
+              .domain([0,d3.max(parcour,(d)=>d[1])])
+        
+      const canvas3=d3.select('#rowCards')
+              .append('svg')
+              .classed("card col",true)
+              .style('height',heightCanvas+75)
+              .style('min-width',widthCanvas)
+              .style('background-color','gray')
+              
+      const groupe3=canvas3.append('g')
+              groupe3.selectAll('.bar')
+              .data(parcour)
+              .enter()
+              .append('rect')
+              .classed('bar',true)
+              .attr('width',xScale3.bandwidth())
+              .attr('height',d=> yScale3(d[1]))
+              .attr('x',d=>xScale3(d[0]))
+              .attr('y',d=>heightCanvas+32.5-yScale3(d[1]))
+              .attr('fill',d=>color(heightCanvas+32.5-yScale3(d[1])))
+          
+            groupe3.selectAll('.label')
+              .data(parcour,(d)=>d[0])
+              .enter()
+              .append('text')
+              .classed('label',true)
+              .text(data=>data[1])
+              .attr('x',d=>xScale3(d[0])+xScale3.bandwidth()/2)
+              .attr('y',d=>heightCanvas+32.5-yScale3(d[1])-10)
+              .attr('text-anchor', 'middle')
+              .attr('fill','white')
+
+            groupe3.append("text")
+                   .text("Parcours")  
+                   .attr('x',d=>widthCanvas/2)
+                   .attr('y',d=>15)
+                   .attr('text-anchor', 'middle')
+                   
+              const groupeAxes3=groupe3.append('g')
+        
+              groupeAxes3.call(d3.axisBottom(xScale3))
+                      .attr('transform',`translate(0,${heightCanvas+50})`)
+                      .style('color','white')
+//---------------------------------------------------------------------------
+const xScale4=d3.scaleBand()
+              .domain(languesFrancaise.map(val=>val[0]))
+              .rangeRound([0,widthCanvas])
+              .padding(0.1)
+        
+              const yScale4=d3.scaleLinear()
+              .range([0,heightCanvas-15])
+              .domain([0,d3.max(languesFrancaise,(d)=>d[1])])
+        
+      const canvas4=d3.select('#rowCards')
+              .append('svg')
+              .classed("card col",true)
+              .style('height',heightCanvas+75)
+              .style('min-width',widthCanvas)
+              .style('background-color','gray')
+              const groupe4=canvas4.append('g')
+              groupe4.selectAll('.bar')
+              .data(languesFrancaise)
+              .enter()
+              .append('rect')
+              .classed('bar',true)
+              .attr('width',xScale4.bandwidth())
+              .attr('height',d=> yScale4(d[1]))
+              .attr('x',d=>xScale4(d[0]))
+              .attr('y',d=>heightCanvas+32.5-yScale4(d[1]))
+              .attr('fill',d=>color(heightCanvas+32.5-yScale4(d[1])))
+          
+              groupe4.selectAll('.label')
+              .data(languesFrancaise,(d)=>d[0])
+              .enter()
+              .append('text')
+              .classed('label',true)
+              .text(data=>data[1])
+              .attr('x',d=>xScale4(d[0])+xScale4.bandwidth()/2)
+              .attr('y',d=>heightCanvas+32.5-yScale4(d[1])-10)
+              .attr('text-anchor', 'middle')
+              .attr('fill','white')
+
+              groupe4.append("text")
+                   .text("Langue Française")  
+                   .attr('x',d=>widthCanvas/2)
+                   .attr('y',d=>15)
+                   .attr('text-anchor', 'middle')
+          
+              const groupeAxes4=groupe4.append('g')
+        
+              groupeAxes4.call(d3.axisBottom(xScale4))
+                      .attr('transform',`translate(0,${heightCanvas+50})`)
+                      .style('color','white')
+//---------------------------------------------------------------------------
+const xScale5=d3.scaleBand()
+              .domain(languesAnglaise.map(val=>val[0]))
+              .rangeRound([0,widthCanvas])
+              .padding(0.1)
+        
+              const yScale5=d3.scaleLinear()
+              .range([0,heightCanvas-15])
+              .domain([0,d3.max(languesAnglaise,(d)=>d[1])])
+        
+      const canvas5=d3.select('#rowCards')
+              .append('svg')
+              .classed("card col",true)
+              .style('height',heightCanvas+75)
+              .style('min-width',widthCanvas)
+              .style('background-color','gray')
+      const groupe5=canvas5.append('g')
+              groupe5.selectAll('.bar')
+              .data(languesAnglaise)
+              .enter()
+              .append('rect')
+              .classed('bar',true)
+              .attr('width',xScale5.bandwidth())
+              .attr('height',d=> yScale5(d[1]))
+              .attr('x',d=>xScale5(d[0]))
+              .attr('y',d=>heightCanvas+32.5-yScale5(d[1]))
+              .attr('fill',d=>color(heightCanvas+32.5-yScale5(d[1])))
+          
+              groupe5.selectAll('.label')
+              .data(languesAnglaise,(d)=>d[0])
+              .enter()
+              .append('text')
+              .classed('label',true)
+              .text(data=>data[1])
+              .attr('x',d=>xScale5(d[0])+xScale5.bandwidth()/2)
+              .attr('y',d=>heightCanvas+32.5-yScale5(d[1])-10)
+              .attr('text-anchor', 'middle')
+              .attr('fill','white')
+
+              groupe5.append("text")
+                   .text("Langue Anglaise")  
+                   .attr('x',d=>widthCanvas/2)
+                   .attr('y',d=>15)
+                   .attr('text-anchor', 'middle')
+          
+              const groupeAxes5=groupe5.append('g')
+        
+              groupeAxes5.call(d3.axisBottom(xScale5))
+                      .attr('transform',`translate(0,${heightCanvas+50})`)
+                      .style('color','white')
+//---------------------------------------------------------------------------
+     connexion.forEach(element => {
+          element[0]=element[0].split(',')[1]
+     });
+
       const xScale=d3.scaleBand()
       .domain(connexion.map(val=>val[0]))
-      .rangeRound([0,500])
+      .rangeRound([0,widthCanvas])
       .padding(0.1)
 
       const yScale=d3.scaleLinear()
-      .range([0,500-15])
+      .range([0,heightCanvas-15])
       .domain([0,d3.max(connexion,(d)=>d[1])])
+
 
       const canvas=d3.select('#rowCards')
       .append('svg')
       .classed("card col",true)
-      .style('height','600px')
-      .style('min-width','500px')
-      .style('background-color','red')
+      .style('height',heightCanvas+75)
+      .style('min-width',widthCanvas)
+      .style('background-color','gray')
       const groupe=canvas.append('g')
       groupe.selectAll('.bar')
       .data(connexion)
@@ -12474,7 +12859,8 @@ function fonction(e){
       .attr('width',xScale.bandwidth())
       .attr('height',d=> yScale(d[1]))
       .attr('x',d=>xScale(d[0]))
-      .attr('y',d=>550-yScale(d[1]))
+      .attr('y',d=>heightCanvas+32.5-yScale(d[1]))
+      .attr('fill',d=>color(heightCanvas+32.5-yScale(d[1])))
   
       groupe.selectAll('.label')
       .data(connexion,(d)=>d[2])
@@ -12483,32 +12869,37 @@ function fonction(e){
       .classed('label',true)
       .text(data=>data[1])
       .attr('x',d=>xScale(d[0])+xScale.bandwidth()/2)
-      .attr('y',d=>550-yScale(d[1])-10)
+      .attr('y',d=>heightCanvas+32.5-yScale(d[1])-10)
       .attr('text-anchor', 'middle')
       .attr('fill','white')
+
+      groupe.append("text")
+                   .text("Connexion Internet")  
+                   .attr('x',d=>widthCanvas/2)
+                   .attr('y',d=>15)
+                   .attr('text-anchor', 'middle')
   
       const groupeAxes=groupe.append('g')
 
       groupeAxes.call(d3.axisBottom(xScale))
-              .attr('transform',`translate(0,575)`)
+              .attr('transform',`translate(0,${widthCanvas+50})`)
               .style('color','white')
-
 //--------------------------------------------------------
       const xScale2=d3.scaleBand()
               .domain(ordinateur.map(val=>val[0]))
-              .rangeRound([0,500])
+              .rangeRound([0,widthCanvas])
               .padding(0.1)
         
               const yScale2=d3.scaleLinear()
-              .range([0,500-15])
+              .range([0,heightCanvas-15])
               .domain([0,d3.max(ordinateur,(d)=>d[1])])
         
       const canvas2=d3.select('#rowCards')
               .append('svg')
               .classed("card col",true)
-              .style('height','600px')
-              .style('min-width','500px')
-              .style('background-color','red')
+              .style('height',heightCanvas+75)
+              .style('min-width',widthCanvas)
+              .style('background-color','gray')
               const groupe2=canvas2.append('g')
               groupe2.selectAll('.bar')
               .data(ordinateur)
@@ -12518,7 +12909,8 @@ function fonction(e){
               .attr('width',xScale2.bandwidth())
               .attr('height',d=> yScale2(d[1]))
               .attr('x',d=>xScale2(d[0]))
-              .attr('y',d=>550-yScale2(d[1]))
+              .attr('y',d=>heightCanvas+32.5-yScale2(d[1]))
+              .attr('fill',d=>color(heightCanvas+32.5-yScale2(d[1])))
           
               groupe2.selectAll('.label')
               .data(ordinateur,(d)=>d[2])
@@ -12527,23 +12919,42 @@ function fonction(e){
               .classed('label',true)
               .text(data=>data[1])
               .attr('x',d=>xScale2(d[0])+xScale2.bandwidth()/2)
-              .attr('y',d=>550-yScale2(d[1])-10)
+              .attr('y',d=>heightCanvas+32.5-yScale2(d[1])-10)
               .attr('text-anchor', 'middle')
               .attr('fill','white')
-          
+
+              groupe2.append("text")
+                   .text("Ordinateur Personnel")  
+                   .attr('x',d=>widthCanvas/2)
+                   .attr('y',d=>15)
+                   .attr('text-anchor', 'middle')
+
               const groupeAxes2=groupe2.append('g')
         
               groupeAxes2.call(d3.axisBottom(xScale2))
-                      .attr('transform',`translate(0,575)`)
+                      .attr('transform',`translate(0,${widthCanvas+50})`)
                       .style('color','white')
+  //--------------------------------------------------------------
   }
 }
 
 function statistiquesFonction(){
+  if (stat==0){
   var myobj = document.getElementById("rowCards");
   myobj.innerHTML=""
   stat=5
+  var obj=document.getElementById("statacceuil")
+  obj.textContent="Retour à la liste des étudiants"
+  }else{
+  var myobj = document.getElementById("rowCards");
+  myobj.innerHTML=""
+  stat=0
+  var obj=document.getElementById("statacceuil")
+  obj.textContent="Voir les statistiques"
+  }
+
   fonction()
 }
+
 </script>
 </html>
