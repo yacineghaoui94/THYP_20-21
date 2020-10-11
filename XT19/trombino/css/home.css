@@ -1,0 +1,25 @@
+
+#students_table{
+    position: relative;
+}
+
+
+#students_table > div > div{
+    
+  background-color: rgb(255, 255, 255);
+  margin: 30px;
+  text-align: center;
+  display: inline-block;
+  overflow: hidden;
+    
+}
+
+.img_holder{
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.img_holder > .card-img-top{
+    position: relative;
+}
