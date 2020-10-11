@@ -1,4 +1,8 @@
-
+var div = d3.select("body").append("div")
+                            .attr("class", "tooltip-donut")
+                            .style("opacity", 0);
+        
+            
 function Specialite_thyp(data){
    
     let info = {
@@ -67,17 +71,26 @@ function Specialite_thyp(data){
          .attr('fill', function(d){ return(color(d.data.key)) })
          .attr("stroke", "#C3D90A")
          .style("stroke-width", "9px")
-         .style("opacity", 0.7);
-     svg
-     .selectAll('mySlices')
-     .data(data_ready)
-     .enter()
-     .append('text')
-     .text(function(d){ return d.data.key})
-     .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-     .style("text-anchor", "middle")
-     .style("font-size", 29)
-     .style("fill","white");
+         .style("opacity", 0.7)
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.85');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "%")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
  
 }
 
@@ -136,21 +149,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
      
     }
 
@@ -209,21 +230,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
      
     }
 
@@ -282,21 +311,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
      
     }
     function Snapchat_thyp(data){
@@ -354,21 +391,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
      
     }
 
@@ -427,21 +472,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
     }
 
     function Telegram_Thyp(data){
@@ -499,21 +552,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
      
     }
     function Instagram_Thyp(data){
@@ -571,21 +632,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
      
     }
 
@@ -644,21 +713,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
      
     }
 
@@ -715,21 +792,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
 
          
      
@@ -788,21 +873,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
     }
     
     function Langue_perse_thyp(data){
@@ -858,21 +951,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
     }
 
     function Langue_allemand_thyp(data){
@@ -928,21 +1029,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
     }
 
 
@@ -999,21 +1108,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
     }
 
 
@@ -1071,21 +1188,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
     }
 
 
@@ -1146,21 +1271,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
     }
 
 
@@ -1221,21 +1354,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
     }
 
 
@@ -1295,21 +1436,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
     }
 
 
@@ -1369,21 +1518,29 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
     }
 
     function Langue_francais_thyp(data){
@@ -1393,11 +1550,13 @@ function Youtube_M2_Thyp(data){
             "je connais un peu":0,
             "je ne connais pas du tout":0
         };
+        
         for(let i = 0; i< data.length;i++){
             if(data[i]['Dans quel parcours êtes vous inscris ?'] === "M2 THYP"){
                 switch(data[i]['Langues [Français]']){
                     case "je suis expert(e)":
                             info["je suis expert(e)"]++;
+
                             break;
                         case "je connais bien":
                             info["je connais bien"]++;
@@ -1439,19 +1598,27 @@ function Youtube_M2_Thyp(data){
          .data(data_ready)
          .enter()
          .append('path')
-             .attr('d', arcGenerator)
-             .attr('fill', function(d){ return(color(d.data.key)) })
-             .attr("stroke", "#C3D90A")
-             .style("stroke-width", "9px")
-             .style("opacity", 0.7);
-         svg
-         .selectAll('mySlices')
-         .data(data_ready)
-         .enter()
-         .append('text')
-         .text(function(d){ return d.data.key})
-         .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
-         .style("text-anchor", "middle")
-         .style("font-size", 29)
-         .style("fill","white");
+         .attr('d', arcGenerator)
+         .attr('fill', function(d){ return(color(d.data.key)) })
+         .attr("stroke", "#C3D90A")
+         .style("stroke-width", "9px")
+         .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.35');
+            div.transition()
+                .duration(50)
+                .style("opacity", 1);
+            div.html(d.data.key + "<br />" + d.value + "/62")
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
     }
