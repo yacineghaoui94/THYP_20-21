@@ -22,8 +22,8 @@ class Facet {
 }
 
 class Proposal {
-    constructor(prop, importance, expresion) {
-        this._ids = [];
+    constructor(prop, importance, expresion, id) {
+        this._ids = [id];
         this._prop = prop;
         this._importance = importance;
         this._expresions = new Set();
