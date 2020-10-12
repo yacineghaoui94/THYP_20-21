@@ -1,57 +1,298 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trombinoscope</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+        integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-</head>
-<body>
-    <ul class="nav nav-tabs">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+    <style type="text/css">
+        .sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 300px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #f1f2f6; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
 
-    </ul>
-    <div class="form-row1" >
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #110f0f;
+  display: block;
+  margin-top: 5px;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+
+<body>
+    <nav class="navbar-toggleable-md navbar-inverse fixed-top bg-inverse" style="background-color: #e4e4e4; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);">
+
+        <ul class="nav nav-tabs justify-content-center" id="tabFacet" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="besoins" style="cursor:pointer">Besoins</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="competences" style="cursor:pointer" >Compétences</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="outils" style="cursor:pointer" >Outils</a>
+            </li>
+        </ul>
+        
+        <ul class="nav nav-pills justify-content-center" id="fill" style="margin-top: 30px;">
+            <li class="nav-item">
+                <a class="nav-link active" id="fil" style="cursor:pointer" id="all">Tout les etudiants</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="fil" style="cursor:pointer">M1 CEN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="fil" style="cursor:pointer">M1 GSI</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" v style="cursor:pointer">M1 NET</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="fil" style="cursor:pointer">M2 THYP</a>
+            </li>
+            <Li class="nav-item">
+                <a class="nav-link" id="fil" style="cursor:pointer">M2 NET</a>
+            </Li>
+        </ul>
+
+    </nav>
+    <div class="sidenav" id="tabFacetContent">
+    </div>
+    <div id="container" class="form-row1" style="margin-top: 100px;">
 
     </div>
     <script>
-        $(document).ready(function(){
-            $.ajax({
-                type: "GET",
-                url: "/THYP_20-21/imerizak/Trombino/data.csv",
-                dataType: "text",
-                success: function(data){getCSV(data)},
-                error : (error) => console.log("erreur :"+error[0])
+        
+            $(document).ready(function () {
+                var dataJson
+            let url = '/THYP_20-21/imerizak/Trombino/data.csv';    
+                d3.csv(url,function(data){
+            dataJson = data
+            JSONdata = data
+            getData(dataJson)
+            console.log(dataJson)
             })
+            })
+        $("#fill .nav-link").click(function () {
+            var fil = $(this).text()
+            $("#fill a").removeClass("active")
+            $(this).addClass('active')
+            if ($(this).attr('id') == 'all') {
+                getStudents('all')
+            } else{
+                getStudents(fil)
+            }
+                
         })
-        function getCSV(csv){
+        var JSONdata
+        function getData(dataJson){
+            var cardClass = '"form-group card student-box"'
+            var cards = []
+            for(i=0;i<68;i++){
+
+                console.log(dataJson[i]["Votre prénom"])
+                let img = getImageDrive(dataJson[i]["Votre photo"])
+                    var cardHtml = "<div class=" + cardClass + ">"
+                    cardHtml += "<img src='" + img + "' width=" + "'320'" + " height=" + "'250'" + " style=" + "'border-radius: 2%;'" + "/>"
+                    cardHtml += "<h3 class=" + "'text-center'" + ">"
+                    cardHtml += dataJson[i]["Votre prénom"] + " " + dataJson[i]["Votre nom"]
+                   
+                    cardHtml += "</h3>"
+                    cardHtml += "<h4 class=" + "'text-center'" + ">"
+                    cardHtml += dataJson[i]["Dans quel parcours êtes vous inscris ?"]
+                    cardHtml += "</h4>"
+                    cardHtml += "<h5 class='"+ "text-center" +"'>"
+                    cardHtml +=  dataJson[i]["Vos spécialités"]
+                    cardHtml += "</h5>"
+                    cardHtml += "<h6 style='"+ "margin-left: 9px;" +"'>"
+                    cardHtml += "Github: " + dataJson[i]["Votre compte GitHub"]
+                    cardHtml += "</h6>"
+                    cardHtml += "<div id='"+i+"'"+ "class='" + "card-footer'"+ "style='" + "display:;'" + ">"
+                    cardHtml += "</div>"
+                    cardHtml += "</div>"
+                    cards.push(cardHtml)
+            }
+            $(".form-row1").append(cards)
+            var headers 
+            Object.keys(dataJson).forEach(function(key){
+                headers = dataJson[key]
+            })
+            var tabs = []
+            for(j=0;j<headers.length;j++){
+                let tabHtml = ""
+                if(headers[j].includes("besoin")){
+                    let value = String(headers[j]).replace("Quelles sont besoins ?","")
+                    tabHtml += "<a class='"+"sideb'"+"style='"+"cursor:pointer;display:'"+">"+value+"</a>"
+                    
+                }
+                if(String(headers[j]).includes("compétence")){
+                    let value = String(headers[j]).replace("Quelles sont vos compétences ?","")
+                    tabHtml += "<a class='"+"sidec'"+"style='"+"cursor:pointer;display:none'"+">"+value+"</a>"
+                }
+                if(String(headers[j]).includes("outils utilisez")){
+                    let value = String(headers[j]).replace("Quelles outils utilisez vous ? ","")
+                    tabHtml += "<a class='"+"sideo'"+"style='"+"cursor:pointer;display:none'"+">"+value+"</a>"
+                }
+                if(tabHtml != ""){
+                    tabs.push(tabHtml)  
+                }else{}
+                    
+            }
+            $("#tabFacetContent").append(tabs)
+           
+
+        }
+        $("#competences").click(function(){
+            $("#tabFacet .nav-link").removeClass('active')
+            $(this).addClass('active')
+            getStudents('all')
+            let sidec = $("#tabFacetContent").find(".sidec")
+            let sideb = $("#tabFacetContent").find(".sideb")
+            let sideo = $("#tabFacetContent").find(".sideo")
+            sidec.css({display: ""})
+            sideb.css({display: "none"})
+            sideo.css({display: "none"})
+        })
+        $("#besoins").click(function(){
+            $("#tabFacet .nav-link").removeClass('active')
+            $(this).addClass('active')
+            getStudents('all')
+            let sidec = $("#tabFacetContent").find(".sidec")
+            let sideb = $("#tabFacetContent").find(".sideb")
+            let sideo = $("#tabFacetContent").find(".sideo")
+            sideb.css({display: ""})
+            sidec.css({display: "none"})
+            sideo.css({display: "none"})
+        })
+        $("#outils").click(function(){
+            $("#tabFacet .nav-link").removeClass('active')
+            $(this).addClass('active')
+            getStudents('all')
+            let sidec = $("#tabFacetContent").find(".sidec")
+            let sideb = $("#tabFacetContent").find(".sideb")
+            let sideo = $("#tabFacetContent").find(".sideo")
+            sideo.css({display: ""})
+            sideb.css({display: "none"})
+            sidec.css({display: "none"})
+        })
+        $(document).delegate('.sideb','click',function(){
+            var str = "Quelles sont besoins ?" + $(this).text()
+            editBoxes(str)
+        })
+        $(document).delegate('.sidec','click',function(){
+            var str = "Quelles sont vos compétences ?" + $(this).text()
+            editBoxes(str)
+        })
+        $(document).delegate('.sideo','click',function(){
+            var str = "Quelles outils utilisez vous ? " + $(this).text()
+            editBoxes(str)
+        })
+        function editBoxes(text){
+            var headers 
+            Object.keys(JSONdata).forEach(function(key){
+                headers = JSONdata[key]
+            })
+            console.log(text)
+            for(i=0;i<headers.length;i++){
+                if(headers[i] == text){
+                    for(j=0;j<68;j++){
+                        $("#"+j).empty()
+                        $("#"+j).append(JSONdata[j][text])
+                    }
+                }
+            }
+        }
+        function getCSV(csv) {
+            let name = "Votre prénom"    
+            
             var data = csv.split(/\r\n|\n/)
             var headers = data[0].split(",")
             var studentTable = []
-            var student =[]
+            var student = []
             var cards = []
-            var cardClass = '"form-group student-box"'
-            var img = "'/profile.png'"
-            for(i=1;i<data.length;i++){
-                
+
+            for (i = 1; i < data.length; i++) {
+
                 student = data[i].split(",")
-                for(j=0;j<headers.length;j++){
-                var cardHtml = "<div class=" + cardClass + ">"
-                cardHtml += "<img src='"+ student[6] +  "'width="+"'320'"+" height="+"'250'"+" style="+"'border-radius: 2%;'"+ "/>"
-                cardHtml += "<h2 class="+"'text-center'"+">"    
-                cardHtml += student[1] + " " + student[2]
-                cardHtml += "</h2>"
-                cardHtml += "<h1 class="+"'text-center'"+">" 
-                cardHtml += student[5]
-                cardHtml += "</h1>" 
-                cardHtml += "</div> "
-                
+                for (j = 0; j < dataJson.length; j++) {
+                    
+
                 }
-                cards.push(cardHtml)  
+                cards.push(cardHtml)
             }
             $(".form-row1").append(cards)
-            
+
         }
+        function getValue(str,index){
+            return dataJson[index][str]
+        }
+        function dataFacet(){
+            for(i=0;i<dataJson.length;i++){
+
+            }
+        }
+        function getImageDrive(img) {
+            let url = new URL(img)
+            let urlParams = new URLSearchParams(url.search)
+            let id = urlParams.get('id')
+            let urlToImage = "https://drive.google.com/uc?id=" + id + "&export=download"
+            return urlToImage
+        }
+        function getStudents(fil) {
+            var stuBoxes, stuBox, filValue, DomFil
+            stuBoxes = document.getElementById("container")
+            stuBox = stuBoxes.getElementsByTagName("div")
+            for (i = 0; i < stuBox.length; i++) {
+                DomFil = stuBox[i].getElementsByTagName("h4")[0]
+
+                if (DomFil) {
+                    filValue = DomFil.innerText
+                    if (filValue === fil) {
+                        stuBox[i].style.display = ""
+                    } else if (fil == 'all') {
+                        stuBox[i].style.display = ""
+                    }
+                    else {
+                        stuBox[i].style.display = "none"
+                    }
+                }
+            }
+        }
+      
     </script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" crossorigin="anonymous"></script>
 </body>
+
 </html>
