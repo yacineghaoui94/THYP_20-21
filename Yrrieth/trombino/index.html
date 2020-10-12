@@ -77,29 +77,64 @@
             pointer-events: none;
         }
 
+        .sidebar {
+            min-width: 250px;
+            max-width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            /* top layer */
+            z-index: 9999;
+        }
+
 
     	</style>
 	</head>
-<body>
 
-<div class="jumbotron">
+    <body>
+
+        <div class="header container-fluid p-0" style="display: block; position: fixed;z-index: 9999;">
+            <nav class="navbar navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <span class="text-white h4">Home</span>
+            </nav>
+        </div>
+        <div class="sidebar">
+            <nav class="navbar navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+            <div class="collapse dropright" id="navbarToggleExternalContent">
+                <div class="bg-white p-4">
+                    <ul class="nav flex-column" id="tabFacet">
+                    </ul>
+                </div>
+            </div>
+        </div>
+<div class="jumbotron mb-0" style="background-color:#A5DF00 !important">
   <h1 class="display-3">Mention Humanités Numériques</h1>
   <h2>Promotion  2020 - 2021</h2>
-  <hr class="my-4">
+  <!--<hr class="my-4">-->
 
-  <ul class="nav nav-tabs" id="tabFacet" role="tablist">
-  </ul>
-  <div class="tab-content" id="tabFacetContent">
-  </div>
-  <ul class="nav nav-tabs" id="tabFilter" role="tablist">
-  </ul>
-
+  <!--<ul class="nav nav-tabs" id="tabFacet" role="tablist">
+    </ul>-->
+  <!--<div class="tab-content" id="tabFacetContent">
+  </div>-->
+  
 </div>
 
+<div id="subNav">
+    <!--<ul class="nav" id="subNavFacet">
+    </ul>-->
+</div>
 
     <div class="container">    
 		<div class="row" id="etuCards" >
-        </div>
+    </div>
         
 <div class="modal fade" id="infosEtu" tabindex="-1" role="dialog" aria-labelledby="modalEtuTitle" aria-hidden="true">
     <div class="modal-dialog modal-full" role="document">
@@ -255,6 +290,40 @@ console.log(Object.values(vals));
              console.log(dataFacet[0].values);
              console.log(dataFacet[0].values[1]);
              console.log(dataFacet[1].values[0]);
+            console.log(dataFacet[0]);
+            
+            /** Fonction qui retourne dans le tableau subNav, l'ensemble des réponses de la catégorie (String)dataDrop
+             * subNav : Tableau vide
+             * dataDrop : Catégorie (Ceux qui sont dans d.label)
+             */
+            function triTabSub(subNav, label) {
+                //console.log(label);
+                for(element in dataFacet) {
+                    //console.log(dataFacet[element].label);
+                    for (element2 in dataFacet[element].values) {
+                        //console.log(dataFacet[element].values[element2]);
+                        //console.log(dataFacet[element].label);
+                        if (dataFacet[element].label == label) {
+                            //console.log(dataFacet[element].values[element2].prop);
+                            subNav.push(dataFacet[element].values[element2].prop);
+                        }
+                    }
+                }
+            }
+
+            triTabParcours = [];
+            triTabOrdinateur = [];
+
+            triTabSub(triTabParcours, 'Parcours');
+            triTabSub(triTabOrdinateur, "Ordinateur");
+
+            console.log(triTabParcours);
+
+
+
+            
+            //console.log(dataDoublons);
+            //console.log(dataForm);
 
 
             /** 
@@ -285,19 +354,67 @@ console.log(Object.values(vals));
                 .attr('id',function(d,i){
                     return "tabFacet"+i
                 })
-                .attr('data-toggle',"tab")
-                .attr('role',"tab")
-                .attr('aria-controls',function(d,i){
-                    return "tabFacetContent"+i
+                .attr('data-toggle',"collapse")
+                .attr('role',"button")
+                .attr('aria-controls',function(d){
+                    return "subNavFacet"+d.label
                 })
                 .attr('aria-selected',function(d,i){
                     return i==0 ? "true" : "false"
                 })
-                .attr('href',function(d,i){
-                    return "#tabFacetContent"+i
+                .attr('href',function(d){
+                    return "#subNavFacet" + d.label;
                 })
                 .text(d => d.label);		
+                
 
+            let subNavhtml ='<ul class = "navbar navbar-expand-lg bg-light navbar-toggleable-sm" id = "subNavFacet"></ul>'
+            
+            function subNavFacetContent(subNavFacetContent, label) {
+                var subNavFacetContent = d3.select("#subNav")
+                .html(function(d) { return subNavhtml.replace(/subNavFacet/gi, "subNavFacet"+label);})
+                .select("ul")
+                .attr("class", "navbar-expand-lg collapse")
+                .selectAll("li")
+                .data(subNavFacetContent)
+                .enter().append("li")
+                .attr('class', "h3")
+                .attr('class',function(d,i){
+                    console.log(i);
+                    return i==0 ? "nav-link active" : "nav-link"
+                })
+                .append("button")
+                .attr("class", "btn btn-primary")
+                .attr("id", function(d,i){
+                    return "subNavFacetContent" + label +i
+                })
+                .text(d => d);
+                return subNavFacetContent;
+            }
+
+            var subNavParcours = subNavFacetContent(triTabParcours, "Parcours");
+            //var subNavOrdinateur = subNavFacetContent(triTabOrdinateur, "Ordinateur");
+
+            //document.getElementById("subNavFacetContentParcours0").addEventListener("click", triFacet);
+            
+
+            function triFacet(data, prop) {
+                //console.log(label);
+                for(element in dataFacet) {
+                    //console.log(dataFacet[element].label);
+                    for (element2 in dataFacet[element].values) {
+                        if (dataFacet[element].values[element2].prop == prop) {
+                            console.log(dataFacet[element].values[element2].ids);
+                            data.push(dataFacet[element].values[element2].ids);
+                        }
+                    }
+                }
+            }
+
+            var triFacetData = [];
+            triFacet(triFacetData, "M1 CEN");
+            console.log(triFacetData);
+            
             //ajoute les content de filtres
             let html = '<div class="container"><div class="row">';
             html += '<div id="tabFacetContent__Col1" class="col-sm" style="padding-right:0px;padding-left:0px;"></div>';
@@ -326,59 +443,6 @@ console.log(Object.values(vals));
                     drawGraphReponse("#tabFacetContent_"+i+"_Col1", d.label, d.values, 100);
                 });
                 
-
-            var tabFilter = d3.select("#tabFilter")
-                .selectAll("li")
-                .data(dataFacet)
-                .enter().append("li")
-                .attr('class',"nav-item")
-                .attr('role',"presentation")
-                .append("a")
-                
-                .attr('class',function(d,i){
-                    return i==0 ? "nav-link active" : "nav-link"
-                })
-                .attr('id',function(d,i){
-                    return "tabFilter"+i
-                })
-                .attr('data-toggle',"tab")
-                .attr('role',"tab")
-                .attr('aria-controls',function(d,i){
-                    return "tabFacetContent"+i
-                })
-                .attr('aria-selected',function(d,i){
-                    return i==0 ? "true" : "false"
-                })
-                .attr('href',function(d,i){
-                    return "#tabFilterContent"+i
-                })
-                //.text((d, i) => Object.values(d.values[0]));
-                .text((d, i) => d.values[0].prop);
-                /*.text((d, i) => {
-                    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-
-                });*/
-                /*.text((d, i) => {
-                    var val, valProp;
-                    d.values.forEach(element => val = element);
-                    console.log(val);
-                    valProp = val.prop;
-                    return valProp;
-                });*/
-                /*.text((d, i) => {
-                    var val, valProp;
-                    console.log(typeof(d));
-                    d.forEach(element => val = element);
-                    console.log(val);
-                    return val;
-                });*/
-                /*.text(function(d, i) {
-                    let j = d.values.length;
-                    console.log(j);
-                    if (i < j) {
-                        d.values[i].prop;
-                    }
-                });*/
             
             /*construction simple
             var arrDiv = d3.select("#container")
