@@ -1,0 +1,99 @@
+.header{
+    text-align: left;
+    background-color: salmon;
+    border-bottom: 1px solid #ffffff;
+}
+
+.filters{
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+    padding-left: 40px;
+    padding-top: 10px;
+    border-bottom: 2px solid #00ffff;
+
+}
+.card{
+    height: 100px;
+}
+.title{
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 5px;
+    
+}
+.titre6{
+    margin-right: 10px; margin-left: 100px;padding-top: 8px;
+}
+
+.stats{
+    border-right: 1px solid black;
+}
+select{
+    display: inline-block;
+}
+.card-img-top{
+    height:40% ;
+}
+.card-title:first-letter{
+    text-transform: uppercase;
+}
+
+polyline{
+    opacity: .3;
+    stroke: #008000;
+    stroke-width: 2px;
+    fill: none;
+}		
+
+.labelName tspan {
+    font-style: normal;
+    font-weight: 700;
+}		
+
+.labelName {
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+.modal-full {
+    min-width: 100%;
+    margin: 0;
+}
+
+.modal-full .modal-content {
+    min-height: 100vh;
+}		
+.tab-pane{
+    height: 100%;
+}
+iframe{
+    height: 100%;
+    width:  100%;
+}
+
+.bs-docs-example {
+    position: relative;
+    margin: 15px 0;
+    padding: 39px 19px 14px;
+    background-color: 12ACD2;
+    border: 1px solid #00ffff;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.scrollspy-example {
+    height: 100px;
+    overflow: auto;
+    position: relative;
+}
+div.tooltip {
+    position: absolute;
+    width: 100px;
+    padding: 6px;
+    font: 12px sans-serif;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}

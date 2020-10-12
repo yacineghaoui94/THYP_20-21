@@ -1,1 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>M2 THYP - 2020/2021</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css">
+        <script src="students.js"></script>
+	</head>
+<body>  
+    <div class="header">
+        <h1>Mention Humanités Numériques</h1>
+        <h2>Promotion  2020 - 2021</h2>
+    </div>
+    <div class="filters">
+           <!-- Recherche par parcours -->
+           <div><h6 class="titre6">Parcours:</h6></div>
+           <div>
+           <select class="custom-select" id="listeParcours" onchange="RechercheParParcours()"> 
+            <option selected >Tout</option>
+           </select>
+           </div>
+           <div><h6 class="titre6">Ordinateur:</h6></div>
+           <div>
+           <select class="custom-select" id="listeParcours" onchange="RechercheParOrdinateur()"> 
+            <option selected >Tout</option>
+            <option value="Oui" >Oui</option>
+            <option value="Non">Non</option>
+           </select>
+           </div>
+           <div><h6 class="titre6">Connexion:</h6></div>
+           <div>
+           <select class="custom-select" id="listeParcours" onchange="RechercheParConnexion()"> 
+            <option selected >Tout</option>
+            <option value="oui" >WIFI</option>
+            <option value="non">4G</option>
+            <option value="non">Ethernet</option>
+            <option value="non">Satellite</option>
+           </select>
+           </div>
+           <div style="float: right;"><h6 class="titre6">Effacer tous les filtres</h6></div>
+           <div style="float: right;">
+               <img  style="width: 25px; height: 25px;" onclick="reloadPage()" />
+           </div>
+    </div>
+    <div class="container-fluid corps" >   
+        <div class="row">
+               <div class="col-2 stats" >
+                  <!-- Statistiques -->
+                    <div class="title"><h6 id="title_stat" >Statistiques</h6></div>
+                    <div  id="tabFacet" role="tablist">
+                    </div> 
+               </div>
+                <div class="col-9 studentsCards">
+                  <!-- Cards -->  
+                    <div class="title"><h6>La liste des étudiants</h6></div>
+                    <div class="row" id="studentsCards" >
+                    </div>
+                </div>
+                
+          </div> 
+     </div>
 
+</div>
+</body>
+</html>
